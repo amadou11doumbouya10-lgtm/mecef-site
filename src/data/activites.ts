@@ -11,6 +11,8 @@ export interface PoleActivite {
   description: string[];
   /** Clés (titre + lieu si besoin de désambiguïser) vers des entrées de data/realisations.ts */
   realisations: { titre: string; lieu?: string }[];
+  /** Illustration générique (pas un chantier MECEF documenté) — même pool que le carrousel du hero. */
+  image: { src: string; alt: string };
 }
 
 export const activites: PoleActivite[] = [
@@ -31,6 +33,7 @@ export const activites: PoleActivite[] = [
       { titre: "École primaire", lieu: "Dabompa, Matoto, Conakry" },
       { titre: "Poste de santé", lieu: "Konsakoro" },
     ],
+    image: { src: "/images/hero-1.jpg", alt: "Ouvriers sur un chantier de construction" },
   },
   {
     slug: "amenagement",
@@ -39,6 +42,7 @@ export const activites: PoleActivite[] = [
     intro: "Terrassement, digues, voiries.",
     description: ["Terrassement, digues, voiries."],
     realisations: [{ titre: "Digues et routes", lieu: "Mandiana (Haute Guinée)" }],
+    image: { src: "/images/hero-5.jpg", alt: "Travaux de maçonnerie sur un chantier" },
   },
   {
     slug: "equipements-fourniture",
@@ -50,6 +54,7 @@ export const activites: PoleActivite[] = [
       { titre: "Direction de l'Urbanisme", lieu: "Siguiri" },
       { titre: "Préfecture de Siguiri" },
     ],
+    image: { src: "/images/hero-2.jpg", alt: "Matériaux et structures sur un chantier" },
   },
   {
     slug: "prestations-diverses",
@@ -58,5 +63,6 @@ export const activites: PoleActivite[] = [
     intro: "Selon les besoins de nos partenaires.",
     description: ["Selon les besoins de nos partenaires.", "Suivi-évaluation des travaux de chantier et études d'ingénierie."],
     realisations: [],
+    image: { src: "/images/hero-3.jpg", alt: "Bâtiment en fin de construction" },
   },
 ];

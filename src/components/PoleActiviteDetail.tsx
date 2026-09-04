@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowLeft } from "lucide-react";
 import type { PoleActivite } from "@/data/activites";
 import { realisations, type Realisation } from "@/data/realisations";
@@ -34,6 +35,11 @@ export default function PoleActiviteDetail({ pole }: { pole: PoleActivite }) {
                 {paragraph}
               </p>
             ))}
+          </div>
+
+          {/* Illustration générique du secteur — pas une photo du chantier MECEF cité ci-dessous. */}
+          <div className="relative mt-10 aspect-[16/9] w-full max-w-2xl overflow-hidden rounded-sm border border-charcoal-border bg-charcoal-card">
+            <Image src={pole.image.src} alt={pole.image.alt} fill className="object-cover" />
           </div>
 
           {items.length > 0 && (
