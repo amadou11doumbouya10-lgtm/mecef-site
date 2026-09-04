@@ -119,7 +119,7 @@ function FilterChip({ label, active, onClick }: { label: string; active: boolean
   );
 }
 
-function RealisationCard({ realisation, accent }: { realisation: Realisation; accent?: boolean }) {
+export function RealisationCard({ realisation, accent }: { realisation: Realisation; accent?: boolean }) {
   const { titre, lieu, annee, montant, beneficiaire, description } = realisation;
 
   return (

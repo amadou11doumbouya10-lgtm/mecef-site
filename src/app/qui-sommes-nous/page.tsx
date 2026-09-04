@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import { UserRound } from "lucide-react";
 import RegionMap from "@/components/RegionMap";
+import Direction from "@/components/Direction";
 
 export const metadata: Metadata = {
   title: "Qui sommes-nous — MECEF ET FILS",
@@ -52,17 +52,7 @@ export default function QuiSommesNousPage() {
                 </div>
               </div>
 
-              <div className="card flex gap-4">
-                <UserRound size={22} className="mt-1 shrink-0 text-laterite" strokeWidth={1.5} />
-                <div>
-                  <h2 className="font-serif text-lg font-medium text-cream">Direction</h2>
-                  <p className="mt-2 text-sm leading-relaxed text-warmgray">
-                    <span className="font-medium text-cream">Mamby DOUMBOUYA</span>, Directeur
-                    Général, dirige l&apos;entreprise et porte une vision familiale du métier — le
-                    nom &laquo;&nbsp;&amp; FILS&nbsp;&raquo; reflète cet engagement dans la durée.
-                  </p>
-                </div>
-              </div>
+              <Direction />
             </div>
 
             <div className="card h-fit">
