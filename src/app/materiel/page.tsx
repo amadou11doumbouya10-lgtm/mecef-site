@@ -1,9 +1,20 @@
 import type { Metadata } from "next";
 import { Truck, Wrench, ShieldCheck, CheckCircle2 } from "lucide-react";
+import HeroBackground from "@/components/HeroBackground";
 
 export const metadata: Metadata = {
   title: "Moyens matériels — MECEF ET FILS",
 };
+
+// Photos libres de droits (Pexels), illustrations génériques de matériel de chantier —
+// pas des photos du parc matériel réel de MECEF.
+const materielImages: { src: string; alt: string }[] = [
+  { src: "/images/materiel-1.jpg", alt: "Camion benne déchargeant des matériaux" },
+  { src: "/images/materiel-2.jpg", alt: "Compacteur et finisseur sur un chantier routier" },
+  { src: "/images/materiel-3.jpg", alt: "Rouleau vibrant sur enrobé" },
+  { src: "/images/materiel-4.jpg", alt: "Pelleteuse et camion sur un chantier" },
+  { src: "/images/materiel-5.jpg", alt: "Ferraillage sur un chantier" },
+];
 
 const materielPropre = [
   "Camion Benne (10 m³, DAF 3600, 2019)",
@@ -51,12 +62,18 @@ function MaterielList({ items }: { items: string[] }) {
 export default function MaterielPage() {
   return (
     <main>
-      <section className="section">
-        <div className="container-page">
+      <section className="relative flex h-[60vh] min-h-[420px] w-full items-end overflow-hidden bg-charcoal">
+        <HeroBackground images={materielImages} />
+        <div className="container-page relative z-10 pb-14">
           <p className="label">Moyens matériels</p>
-          <h1 className="section-title mt-3">
+          <h1 className="mt-3 max-w-2xl font-serif text-3xl font-medium leading-tight text-cream drop-shadow-[0_4px_24px_rgba(0,0,0,0.6)] sm:text-4xl">
             Un parc matériel propre, complété en location<span className="text-laterite">.</span>
           </h1>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="container-page">
           <p className="section-intro">
             MECEF ET FILS dispose d&apos;un parc matériel propre, complété par des équipements en
             location, permettant une exécution autonome et rapide de ses chantiers.
