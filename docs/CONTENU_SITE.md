@@ -116,9 +116,10 @@ MECEF ET FILS développe activement des relations de collaboration avec les inst
 
 ### Nos partenaires institutionnels
 - **SNIES** (Service National des Infrastructures et Équipements Scolaires) — collaboration établie sur plusieurs projets scolaires à Conakry
-- **AGEROUTE** — référence sur travaux routiers (Lot 10)
+- **AGEROUTE** (Agence de Gestion des Routes-Guinée) — référence sur travaux routiers (Lot 10). Site officiel : ageroute.gov.gn
 - **PADER HG** — programme de développement agricole, Haute Guinée
 - **PDLG** — programme de développement local
+- **UCEP** (Unité de Coordination et d'Exécution des Projets) — structure gouvernementale guinéenne (sous tutelle du Ministère du Plan et de la Coopération Internationale) qui coordonne les interventions des partenaires techniques et financiers (Banque Mondiale, BAD) sur les projets d'appui à la gouvernance. Site officiel : ucepguinee.org — ajoutée le 2026-09-10, logo fourni par le client
 
 ### Notre démarche
 Nous sommes ouverts à toute opportunité de collaboration avec les ministères, agences et projets financés par des bailleurs internationaux (BAD, Banque Mondiale, etc.), notamment dans les domaines de la construction, de l'aménagement et de la fourniture d'équipements.

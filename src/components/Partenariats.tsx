@@ -1,7 +1,11 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Handshake } from "lucide-react";
 import Reveal from "@/components/Reveal";
 
+// Logo + lien uniquement pour les partenaires dont la source officielle est vérifiée
+// (voir docs/CONTENU_SITE.md et src/components/PartnerStrip.tsx) — les autres gardent
+// l'icône générique plutôt qu'un visuel inventé.
 const partenaires = [
   {
     sigle: "SNIES",
@@ -12,6 +16,8 @@ const partenaires = [
     sigle: "AGEROUTE",
     nom: "Agence Guinéenne des Routes",
     description: "Référence sur travaux routiers (Lot 10).",
+    logo: "/logo/partenaires/ageroute.png",
+    href: "https://ageroute.gov.gn",
   },
   {
     sigle: "PADER HG",
@@ -22,6 +28,13 @@ const partenaires = [
     sigle: "PDLG",
     nom: "Programme de développement local",
     description: "Construction du poste de santé de Konsakoro.",
+  },
+  {
+    sigle: "UCEP",
+    nom: "Unité de Coordination et d'Exécution des Projets",
+    description: "Coordonne les interventions des partenaires techniques et financiers (Banque Mondiale, BAD) sur les projets d'appui à la gouvernance.",
+    logo: "/logo/partenaires/ucep.png",
+    href: "https://ucepguinee.org",
   },
 ];
 
@@ -40,10 +53,27 @@ export default function Partenariats() {
             </p>
           </Reveal>
 
-          <Reveal delay={100} className="mt-12 grid gap-6 sm:grid-cols-2">
+          <Reveal delay={100} className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {partenaires.map((partenaire) => (
               <div key={partenaire.sigle} className="card flex gap-4">
-                <Handshake size={20} className="mt-1 shrink-0 text-laterite" strokeWidth={1.5} />
+                {partenaire.logo ? (
+                  <a
+                    href={partenaire.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex size-11 shrink-0 items-center justify-center rounded-sm bg-cream p-1.5 transition-opacity hover:opacity-80"
+                  >
+                    <Image
+                      src={partenaire.logo}
+                      alt={partenaire.sigle}
+                      width={80}
+                      height={80}
+                      className="size-full object-contain"
+                    />
+                  </a>
+                ) : (
+                  <Handshake size={20} className="mt-1 shrink-0 text-laterite" strokeWidth={1.5} />
+                )}
                 <div>
                   <p className="font-serif text-lg font-medium text-cream">{partenaire.sigle}</p>
                   <p className="mt-1 font-mono text-[11px] uppercase tracking-wide text-warmgray-dark">

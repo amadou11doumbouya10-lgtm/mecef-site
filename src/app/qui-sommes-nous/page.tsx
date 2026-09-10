@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import RegionMap from "@/components/RegionMap";
 import Direction from "@/components/Direction";
+import NotreMission from "@/components/NotreMission";
 
 export const metadata: Metadata = {
   title: "Qui sommes-nous — MECEF ET FILS",
@@ -69,6 +70,8 @@ export default function QuiSommesNousPage() {
           </div>
         </div>
       </section>
+
+      <NotreMission />
     </main>
   );
 }

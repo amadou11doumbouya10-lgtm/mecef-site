@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { MapPin, Calendar, Landmark, Coins } from "lucide-react";
+import { MapPin, Landmark } from "lucide-react";
 import { realisations, type Realisation, type CategorieRealisation } from "@/data/realisations";
 import Reveal from "@/components/Reveal";
 
@@ -133,12 +133,6 @@ export function RealisationCard({ realisation, accent }: { realisation: Realisat
             {lieu}
           </span>
         )}
-        {annee && (
-          <span className="inline-flex items-center gap-1.5">
-            <Calendar size={13} className="text-laterite" />
-            {annee}
-          </span>
-        )}
         {beneficiaire && (
           <span className="inline-flex items-center gap-1.5">
             <Landmark size={13} className="text-laterite" />
@@ -149,11 +143,21 @@ export function RealisationCard({ realisation, accent }: { realisation: Realisat
 
       {description && <p className="mt-3 text-sm leading-relaxed text-warmgray">{description}</p>}
 
-      {montant && (
-        <p className="mt-4 inline-flex items-center gap-1.5 font-serif text-base font-medium text-laterite">
-          <Coins size={15} />
-          {montant}
-        </p>
+      {(annee || montant) && (
+        <div className="mt-auto flex divide-x divide-charcoal-border border-t border-charcoal-border pt-4">
+          {annee && (
+            <div className={montant ? "pr-4" : ""}>
+              <p className="label">Année</p>
+              <p className="mt-1 font-serif text-base font-medium text-cream">{annee}</p>
+            </div>
+          )}
+          {montant && (
+            <div className={annee ? "pl-4" : ""}>
+              <p className="label">Montant</p>
+              <p className="mt-1 font-serif text-base font-medium text-laterite">{montant}</p>
+            </div>
+          )}
+        </div>
       )}
     </div>
   );
