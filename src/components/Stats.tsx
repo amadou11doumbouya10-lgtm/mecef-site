@@ -1,21 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { realisations } from "@/data/realisations";
-
-interface Stat {
-  target: number;
-  prefix?: string;
-  suffix: string;
-  label: string;
-}
-
-const stats: Stat[] = [
-  { target: 9, suffix: " ans", label: "d'expérience dans le BTP en Guinée" },
-  { target: 10, prefix: "", suffix: " Mrds+ GNF", label: "de chantiers réalisés depuis 2016" },
-  { target: realisations.length, suffix: "+", label: "références chantiers" },
-  { target: 2, suffix: " régions", label: "Haute Guinée et Conakry" },
-];
+import { stats } from "@/data/stats";
 
 export default function Stats() {
   const ref = useRef<HTMLDivElement>(null);

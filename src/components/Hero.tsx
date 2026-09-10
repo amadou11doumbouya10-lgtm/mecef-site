@@ -1,5 +1,15 @@
 import Link from "next/link";
+import { Clock, Coins, Building2 } from "lucide-react";
 import HeroBackground from "@/components/HeroBackground";
+import { stats } from "@/data/stats";
+
+// Les 3 chiffres les plus parlants, en cartes flottantes sur l'image — le bandeau complet
+// (4 chiffres) reste juste en dessous du hero (Stats.tsx), rien n'est retiré ni dupliqué en trop.
+const heroStats = [
+  { icon: Clock, title: "Expérience", stat: stats[0] },
+  { icon: Coins, title: "Chantiers réalisés", stat: stats[1] },
+  { icon: Building2, title: "Références", stat: stats[2] },
+];
 
 // Photos libres de droits (Pexels / Unsplash, licences gratuites) — pas encore de vraies photos
 // de chantier MECEF. À remplacer dès que le client en fournit.
@@ -42,6 +52,27 @@ export default function Hero() {
             Nous contacter
           </Link>
         </div>
+      </div>
+
+      <div className="absolute right-6 top-28 z-10 hidden w-64 flex-col gap-4 lg:flex xl:right-16">
+        {heroStats.map(({ icon: Icon, title, stat }) => (
+          <div
+            key={title}
+            className="rounded-sm border border-charcoal-border/60 bg-charcoal/60 p-4 backdrop-blur-sm"
+          >
+            <div className="flex items-center gap-2">
+              <span className="flex size-7 items-center justify-center rounded-full bg-charcoal-card/80 text-laterite">
+                <Icon size={14} strokeWidth={1.5} />
+              </span>
+              <p className="font-mono text-[10px] uppercase tracking-[0.15em] text-warmgray">{title}</p>
+            </div>
+            <p className="mt-3 font-serif text-2xl font-medium text-cream">
+              {stat.target}
+              {stat.suffix}
+            </p>
+            <p className="mt-1 text-xs text-warmgray">{stat.label}</p>
+          </div>
+        ))}
       </div>
     </section>
   );
