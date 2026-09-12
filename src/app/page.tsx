@@ -3,6 +3,7 @@ import PartnerStrip from "@/components/PartnerStrip";
 import Stats from "@/components/Stats";
 import Sectors from "@/components/Sectors";
 import Realisations from "@/components/Realisations";
+import HomeCta from "@/components/HomeCta";
 
 export default function HomePage() {
   return (
@@ -12,6 +13,7 @@ export default function HomePage() {
       <Stats />
       <Sectors />
       <Realisations variant="featured" />
+      <HomeCta />
     </main>
   );
 }
