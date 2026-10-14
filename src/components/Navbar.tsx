@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -17,10 +17,26 @@ const links = [
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
 
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  // Transparente en haut de page (la photo du hero passe dessous, cf. -mt-20 dans Hero.tsx),
+  // fond charbon dès qu'on défile ou que le menu mobile est ouvert, pour rester lisible.
+  const solid = scrolled || open;
+
   return (
-    <header className="sticky top-0 z-50 border-b border-charcoal-border bg-charcoal/95 backdrop-blur">
+    <header
+      className={`sticky top-0 z-50 border-b transition-colors duration-300 ${
+        solid ? "border-charcoal-border bg-charcoal/95 backdrop-blur" : "border-transparent bg-transparent"
+      }`}
+    >
       <div className="container-page flex h-20 items-center justify-between">
         <Link href="/" className="flex items-center gap-3">
           <Image src="/logo/mecef-mark.png" alt="" width={40} height={40} className="size-10 object-contain" />

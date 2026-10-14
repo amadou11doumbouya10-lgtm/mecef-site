@@ -23,7 +23,8 @@ const heroImages: { src: string; alt: string }[] = [
 
 export default function Hero() {
   return (
-    <section className="relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-charcoal">
+    // -mt-20 = hauteur de la Navbar (h-20) : la photo remonte sous la barre transparente.
+    <section className="relative -mt-20 flex min-h-screen w-full items-center justify-center overflow-hidden bg-charcoal">
       <HeroBackground images={heroImages} />
 
       <div className="container-page relative z-10 flex flex-col items-start py-24 text-left sm:py-32">
@@ -54,7 +55,7 @@ export default function Hero() {
         </div>
       </div>
 
-      <div className="absolute right-6 top-28 z-10 hidden w-64 flex-col gap-4 lg:flex xl:right-16">
+      <div className="absolute right-6 top-36 z-10 hidden w-64 flex-col gap-4 lg:flex xl:right-16">
         {heroStats.map(({ icon: Icon, title, stat }) => (
           <div
             key={title}

@@ -62,7 +62,8 @@ function MaterielList({ items }: { items: string[] }) {
 export default function MaterielPage() {
   return (
     <main>
-      <section className="relative flex h-[60vh] min-h-[420px] w-full items-end overflow-hidden bg-charcoal">
+      {/* -mt-20 = hauteur de la Navbar : la photo remonte sous la barre transparente */}
+      <section className="relative -mt-20 flex h-[60vh] min-h-[420px] w-full items-end overflow-hidden bg-charcoal">
         <HeroBackground images={materielImages} />
         <div className="container-page relative z-10 pb-14">
           <p className="label">Moyens matériels</p>
