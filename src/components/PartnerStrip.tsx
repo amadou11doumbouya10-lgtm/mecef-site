@@ -23,33 +23,35 @@ export default function PartnerStrip() {
     <section className="border-b border-charcoal-border bg-charcoal py-10">
       <div className="container-page">
         <p className="label text-center">Partenaires institutionnels</p>
-        <div className="mt-6 flex flex-wrap items-center justify-center gap-x-10 gap-y-6">
-          {partners.map((partner) =>
-            partner.logo ? (
-              <a
-                key={partner.name}
-                href={partner.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex h-14 items-center rounded-sm bg-cream px-4 transition-opacity hover:opacity-80"
-              >
-                <Image
-                  src={partner.logo}
-                  alt={partner.name}
-                  width={120}
-                  height={40}
-                  className="h-8 w-auto object-contain sm:h-9"
-                />
-              </a>
-            ) : (
-              <span
-                key={partner.name}
-                className="font-mono text-xs uppercase tracking-[0.15em] text-warmgray"
-              >
-                {partner.name}
-              </span>
-            )
-          )}
+        <div className="mt-6 overflow-hidden">
+          <div className="marquee-track flex w-max items-center gap-x-10">
+            {[...partners, ...partners].map((partner, i) =>
+              partner.logo ? (
+                <a
+                  key={partner.name + i}
+                  href={partner.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex h-14 shrink-0 items-center rounded-sm bg-cream px-4 transition-opacity hover:opacity-80"
+                >
+                  <Image
+                    src={partner.logo}
+                    alt={partner.name}
+                    width={120}
+                    height={40}
+                    className="h-8 w-auto object-contain sm:h-9"
+                  />
+                </a>
+              ) : (
+                <span
+                  key={partner.name + i}
+                  className="shrink-0 font-mono text-xs uppercase tracking-[0.15em] text-warmgray"
+                >
+                  {partner.name}
+                </span>
+              )
+            )}
+          </div>
         </div>
       </div>
     </section>

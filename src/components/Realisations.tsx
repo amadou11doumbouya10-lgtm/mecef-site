@@ -43,7 +43,7 @@ export default function Realisations({ variant = "full" }: RealisationsProps) {
 
           <Link
             href="/realisations"
-            className="mt-8 inline-block font-mono text-xs font-medium uppercase tracking-[0.15em] text-laterite hover:text-cream"
+            className="mt-8 inline-block font-mono text-xs font-medium uppercase tracking-[0.15em] text-gold hover:text-cream"
           >
             Voir toutes nos réalisations →
           </Link>
@@ -110,8 +110,8 @@ function FilterChip({ label, active, onClick }: { label: string; active: boolean
       aria-pressed={active}
       className={`rounded-full border px-4 py-1.5 font-mono text-[11px] font-medium uppercase tracking-[0.1em] transition-colors ${
         active
-          ? "border-laterite bg-laterite text-cream"
-          : "border-charcoal-border text-warmgray hover:border-laterite hover:text-cream"
+          ? "border-gold bg-gold text-cream"
+          : "border-charcoal-border text-warmgray hover:border-gold hover:text-cream"
       }`}
     >
       {label}
@@ -120,22 +120,26 @@ function FilterChip({ label, active, onClick }: { label: string; active: boolean
 }
 
 export function RealisationCard({ realisation, accent }: { realisation: Realisation; accent?: boolean }) {
-  const { titre, lieu, annee, montant, beneficiaire, description } = realisation;
+  const { titre, lieu, annee, montant, beneficiaire, description, statut = "Achevé" } = realisation;
 
   return (
-    <div className={`card flex h-full flex-col ${accent ? "border-l-4 border-l-laterite" : ""}`}>
+    <div className={`card flex h-full flex-col ${accent ? "border-l-4 border-l-gold" : ""}`}>
+      <span className="mb-3 inline-flex w-fit items-center rounded-sm border border-charcoal-border bg-charcoal px-2 py-0.5 font-mono text-[10px] uppercase tracking-wide text-warmgray">
+        {statut}
+      </span>
+
       <h3 className="font-serif text-lg font-medium text-cream">{titre}</h3>
 
       <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1 font-mono text-[11px] uppercase tracking-wide text-warmgray">
         {lieu && (
           <span className="inline-flex items-center gap-1.5">
-            <MapPin size={13} className="text-laterite" />
+            <MapPin size={13} className="text-sky" />
             {lieu}
           </span>
         )}
         {beneficiaire && (
           <span className="inline-flex items-center gap-1.5">
-            <Landmark size={13} className="text-laterite" />
+            <Landmark size={13} className="text-gold" />
             {beneficiaire}
           </span>
         )}
@@ -154,7 +158,7 @@ export function RealisationCard({ realisation, accent }: { realisation: Realisat
           {montant && (
             <div className={annee ? "pl-4" : ""}>
               <p className="label">Montant</p>
-              <p className="mt-1 font-serif text-base font-medium text-laterite">{montant}</p>
+              <p className="mt-1 font-serif text-base font-medium text-gold">{montant}</p>
             </div>
           )}
         </div>

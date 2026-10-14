@@ -18,14 +18,14 @@ export default function PoleActiviteDetail({ pole }: { pole: PoleActivite }) {
     <main>
       <section className="section">
         <div className="container-page">
-          <div className="flex size-12 items-center justify-center rounded bg-laterite/10 text-laterite">
+          <div className="flex size-12 items-center justify-center rounded bg-gold/10 text-gold">
             <Icon size={24} strokeWidth={1.5} />
           </div>
 
           <p className="label mt-6">Nos secteurs</p>
           <h1 className="section-title mt-3">
             {pole.title}
-            <span className="text-laterite">.</span>
+            <span className="text-gold">.</span>
           </h1>
           <p className="section-intro">{pole.intro}</p>
 
@@ -55,7 +55,7 @@ export default function PoleActiviteDetail({ pole }: { pole: PoleActivite }) {
 
           <Link
             href="/"
-            className="mt-16 inline-flex items-center gap-1.5 font-mono text-xs font-medium uppercase tracking-[0.15em] text-laterite hover:text-cream"
+            className="mt-16 inline-flex items-center gap-1.5 font-mono text-xs font-medium uppercase tracking-[0.15em] text-gold hover:text-cream"
           >
             <ArrowLeft size={14} />
             Retour à l&apos;accueil

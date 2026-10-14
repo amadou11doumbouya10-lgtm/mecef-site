@@ -15,7 +15,7 @@ function SubmitButton() {
 }
 
 const inputClasses =
-  "w-full rounded-sm border border-charcoal-border bg-charcoal px-4 py-2.5 text-sm text-cream placeholder:text-warmgray-dark focus:border-laterite focus:outline-none focus:ring-1 focus:ring-laterite";
+  "w-full rounded-sm border border-charcoal-border bg-charcoal px-4 py-2.5 text-sm text-cream placeholder:text-warmgray-dark focus:border-gold focus:outline-none focus:ring-1 focus:ring-gold";
 
 export default function Contact() {
   const [state, formAction] = useFormState(sendContactMessage, initialContactFormState);
@@ -28,22 +28,22 @@ export default function Contact() {
           <h2 className="mt-3 font-serif text-2xl font-medium text-cream">MECEF ET FILS</h2>
           <ul className="mt-6 space-y-4 text-sm text-warmgray">
             <li className="flex items-start gap-3">
-              <MapPin size={17} className="mt-0.5 shrink-0 text-laterite" />
+              <MapPin size={17} className="mt-0.5 shrink-0 text-gold" />
               <span>Siguiri Koura I, Commune de Siguiri, République de Guinée</span>
             </li>
             <li className="flex items-center gap-3">
-              <Phone size={17} className="shrink-0 text-laterite" />
-              <a href="tel:+224622067837" className="hover:text-laterite">
+              <Phone size={17} className="shrink-0 text-gold" />
+              <a href="tel:+224622067837" className="hover:text-gold">
                 622 06 78 37
               </a>
               {" / "}
-              <a href="tel:+224664700544" className="hover:text-laterite">
+              <a href="tel:+224664700544" className="hover:text-gold">
                 664 70 05 44
               </a>
             </li>
             <li className="flex items-center gap-3">
-              <Mail size={17} className="shrink-0 text-laterite" />
-              <a href="mailto:2017fakolymamby@gmail.com" className="hover:text-laterite">
+              <Mail size={17} className="shrink-0 text-gold" />
+              <a href="mailto:2017fakolymamby@gmail.com" className="hover:text-gold">
                 2017fakolymamby@gmail.com
               </a>
             </li>

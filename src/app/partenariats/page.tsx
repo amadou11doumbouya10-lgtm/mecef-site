@@ -12,7 +12,7 @@ export default function PartenariatsPage() {
         <div className="container-page">
           <p className="label">Partenariats</p>
           <h1 className="section-title mt-3">
-            Des collaborations durables avec les institutions<span className="text-laterite">.</span>
+            Des collaborations durables avec les institutions<span className="text-gold">.</span>
           </h1>
         </div>
       </section>

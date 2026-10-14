@@ -64,7 +64,7 @@ export default function HeroBackground({ images = [] }: HeroBackgroundProps) {
             <span
               key={image.src}
               className={`size-1.5 rounded-full transition-colors ${
-                index === active ? "bg-laterite" : "bg-cream/40"
+                index === active ? "bg-gold" : "bg-cream/40"
               }`}
             />
           ))}
@@ -74,7 +74,7 @@ export default function HeroBackground({ images = [] }: HeroBackgroundProps) {
   );
 }
 
-/* Motif géométrique en attendant des photos de chantier libres de droits : toits stylisés + lignes de plan + accent orange */
+/* Motif géométrique en attendant des photos de chantier libres de droits : toits stylisés + lignes de plan + accent doré */
 function HeroPlaceholder() {
   return (
     <svg
@@ -83,15 +83,15 @@ function HeroPlaceholder() {
       preserveAspectRatio="xMidYMid slice"
       aria-hidden="true"
     >
-      <line x1="0" y1="112" x2="800" y2="112" stroke="#2C2E2F" strokeWidth="1" strokeDasharray="4 6" />
-      <line x1="0" y1="225" x2="800" y2="225" stroke="#2C2E2F" strokeWidth="1" strokeDasharray="4 6" />
-      <line x1="0" y1="337" x2="800" y2="337" stroke="#2C2E2F" strokeWidth="1" strokeDasharray="4 6" />
+      <line x1="0" y1="112" x2="800" y2="112" className="stroke-charcoal-border" strokeWidth="1" strokeDasharray="4 6" />
+      <line x1="0" y1="225" x2="800" y2="225" className="stroke-charcoal-border" strokeWidth="1" strokeDasharray="4 6" />
+      <line x1="0" y1="337" x2="800" y2="337" className="stroke-charcoal-border" strokeWidth="1" strokeDasharray="4 6" />
 
-      <path d="M 60 400 L 220 220 L 380 400 Z" fill="none" stroke="#8A8985" strokeWidth="1.5" />
-      <path d="M 300 400 L 460 180 L 620 400 Z" fill="none" stroke="#6E6C67" strokeWidth="1.5" />
-      <path d="M 500 400 L 660 260 L 800 400 Z" fill="none" stroke="#8A8985" strokeWidth="1.5" />
+      <path d="M 60 400 L 220 220 L 380 400 Z" fill="none" className="stroke-warmgray-light" strokeWidth="1.5" />
+      <path d="M 300 400 L 460 180 L 620 400 Z" fill="none" className="stroke-warmgray-dark" strokeWidth="1.5" />
+      <path d="M 500 400 L 660 260 L 800 400 Z" fill="none" className="stroke-warmgray-light" strokeWidth="1.5" />
 
-      <circle cx="640" cy="120" r="46" fill="none" stroke="#D9622B" strokeWidth="1.5" />
+      <circle cx="640" cy="120" r="46" fill="none" className="stroke-gold" strokeWidth="1.5" />
     </svg>
   );
 }

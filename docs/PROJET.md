@@ -97,7 +97,8 @@ au-delà de ce qui figure dans `activites.ts`.
 | Fond principal | `bg-charcoal` | `#181A1B` |
 | Fond cartes/sections | `bg-charcoal-card` | `#212325` |
 | Bordures | `border-charcoal-border` | `#2C2E2F` |
-| Accent | `text-laterite` / `bg-laterite` | `#D9622B` |
+| Accent principal | `text-gold` / `bg-gold` | `#F0B429` |
+| Accents secondaires | `text-sky` / `text-leaf` | `#3F93D6` / `#63AB42` |
 | Texte principal | `text-cream` | `#F3EFE7` |
 | Texte secondaire | `text-warmgray` | `#9C9A94` |
 | Texte tertiaire / labels | `text-warmgray-dark` / `text-warmgray-light` | `#6E6C67` / `#8A8985` |
@@ -106,9 +107,13 @@ au-delà de ce qui figure dans `activites.ts`.
 mono majuscules espacées (`font-mono`, IBM Plex Mono), corps de texte en sans-serif système.
 
 **Ton** : sobre, éditorial — pas de gradients, pas d'ombres portées, pas d'icônes ou de photos
-génériques de stock. Le hero (`src/components/Hero.tsx`) accepte une prop `imageUrl` optionnelle ;
-tant qu'aucune photo réelle de chantier n'est fournie, il affiche un motif géométrique discret
+génériques de stock. Le fond du hero (`src/components/HeroBackground.tsx`) prend un tableau
+`images` (carrousel en fondu) ; s'il est vide, il affiche un motif géométrique discret
 (`HeroPlaceholder`) plutôt qu'un placeholder générique.
+
+Les trois accents (or, bleu, vert) reprennent les couleurs du logo client ; ils remplacent
+depuis le 2026-10-14 l'accent unique latérite (`#D9622B`) du brief d'origine. L'or sert
+d'accent principal, le bleu et le vert restent des touches secondaires.
 
 ## Contenu
 

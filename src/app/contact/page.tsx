@@ -12,7 +12,7 @@ export default function ContactPage() {
         <div className="container-page">
           <p className="label">Contact</p>
           <h1 className="section-title mt-3">
-            Parlons de votre projet<span className="text-laterite">.</span>
+            Parlons de votre projet<span className="text-gold">.</span>
           </h1>
         </div>
       </section>

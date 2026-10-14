@@ -72,7 +72,7 @@ export default function Partenariats() {
                     />
                   </a>
                 ) : (
-                  <Handshake size={20} className="mt-1 shrink-0 text-laterite" strokeWidth={1.5} />
+                  <Handshake size={20} className="mt-1 shrink-0 text-gold" strokeWidth={1.5} />
                 )}
                 <div>
                   <p className="font-serif text-lg font-medium text-cream">{partenaire.sigle}</p>
@@ -103,7 +103,7 @@ export default function Partenariats() {
         <Reveal className="container-page flex flex-col items-start gap-6 sm:flex-row sm:items-center sm:justify-between">
           <h2 className="max-w-xl font-serif text-2xl font-medium text-cream">
             Vous portez un projet et cherchez un partenaire local de confiance
-            <span className="text-laterite">.</span>
+            <span className="text-gold">.</span>
           </h2>
           <Link href="/contact" className="btn-primary shrink-0">
             Contactez-nous

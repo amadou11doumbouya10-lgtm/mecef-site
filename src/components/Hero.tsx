@@ -28,13 +28,13 @@ export default function Hero() {
 
       <div className="container-page relative z-10 flex flex-col items-start py-24 text-left sm:py-32">
         <span className="badge">
-          <span className="size-1.5 rounded-full bg-laterite" />
+          <span className="size-1.5 rounded-full bg-gold" />
           Siguiri — Conakry — Depuis 2016
         </span>
 
         <h1 className="mt-8 max-w-2xl font-serif text-4xl font-medium leading-tight text-cream drop-shadow-[0_4px_24px_rgba(0,0,0,0.6)] sm:text-6xl lg:max-w-xl xl:max-w-2xl">
           Construction, Aménagement, Équipements en Guinée depuis 2016
-          <span className="text-laterite">.</span>
+          <span className="text-gold">.</span>
         </h1>
 
         <p className="mt-6 max-w-2xl text-base leading-relaxed text-warmgray sm:text-lg lg:max-w-lg">
@@ -61,7 +61,7 @@ export default function Hero() {
             className="rounded-sm border border-charcoal-border/60 bg-charcoal/60 p-4 backdrop-blur-sm"
           >
             <div className="flex items-center gap-2">
-              <span className="flex size-7 items-center justify-center rounded-full bg-charcoal-card/80 text-laterite">
+              <span className="flex size-7 items-center justify-center rounded-full bg-charcoal-card/80 text-gold">
                 <Icon size={14} strokeWidth={1.5} />
               </span>
               <p className="font-mono text-[10px] uppercase tracking-[0.15em] text-warmgray">{title}</p>
@@ -74,6 +74,16 @@ export default function Hero() {
           </div>
         ))}
       </div>
+
+      <svg
+        className="absolute inset-x-0 bottom-0 z-10 h-28 w-full sm:h-36"
+        viewBox="0 0 1440 140"
+        preserveAspectRatio="none"
+        aria-hidden="true"
+      >
+        <path d="M0,140 L640,30 L800,30 L1440,140 Z" className="fill-charcoal" />
+        <path d="M0,140 L640,30 L800,30 L1440,140" fill="none" className="stroke-charcoal-border" strokeWidth="2" />
+      </svg>
     </section>
   );
 }

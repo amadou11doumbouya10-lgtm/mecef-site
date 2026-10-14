@@ -21,8 +21,8 @@ export default function Sectors() {
               href={`/activites/${slug}`}
               className="group bg-charcoal p-6 transition-colors hover:bg-charcoal-card"
             >
-              <Icon size={20} className="text-laterite" strokeWidth={1.5} />
-              <h3 className="mt-4 font-serif text-lg font-medium text-cream group-hover:text-laterite">
+              <Icon size={20} className="text-gold" strokeWidth={1.5} />
+              <h3 className="mt-4 font-serif text-lg font-medium text-cream group-hover:text-gold">
                 {title}
               </h3>
               <p className="mt-2 text-sm leading-relaxed text-warmgray">{intro}</p>

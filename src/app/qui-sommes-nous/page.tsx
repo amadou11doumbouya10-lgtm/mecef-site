@@ -21,7 +21,7 @@ export default function QuiSommesNousPage() {
         <div className="container-page">
           <p className="label">Qui sommes-nous</p>
           <h1 className="section-title mt-3">
-            MECEF ET FILS<span className="text-laterite">.</span>
+            MECEF ET FILS<span className="text-gold">.</span>
           </h1>
 
           <div className="mt-12 grid gap-12 lg:grid-cols-3">

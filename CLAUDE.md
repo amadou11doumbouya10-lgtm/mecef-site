@@ -42,17 +42,22 @@ company. Static marketing site with six pages, no database. Everything lives und
 ## Visual identity
 
 Deliberately distinct from the developer's other project (`vision-amah`): serif + mono
-typefaces instead of Geist, charcoal/latérite palette instead of Vision Amah's palette. Sober,
-editorial tone — no gradients, no heavy drop shadows, no generic stock icons or photos.
+typefaces instead of Geist, charcoal palette with the logo's own accents (gold/sky/leaf) instead of
+Vision Amah's palette. Sober, editorial tone — no gradients, no heavy drop shadows, no generic stock
+icons or photos.
 
-**Palette** (`tailwind.config.ts`):
+**Palette** (`tailwind.config.ts`). The single `laterite` accent (`#D9622B`) from the original
+brief was replaced (2026-10-14) by the three accent colors of the client logo; `gold` is the
+main accent (buttons, links, active states, markers), `sky`/`leaf` are secondary touches (e.g.
+`Stats.tsx` gives each figure its own accent, `RealisationCard` uses `sky` for the location pin).
 
 | Token | Hex |
 |---|---|
 | `charcoal` (bg) | `#181A1B` |
 | `charcoal-card` | `#212325` |
 | `charcoal-border` | `#2C2E2F` |
-| `laterite` (accent) | `#D9622B` |
+| `gold` (main accent) | `#F0B429` |
+| `sky` / `leaf` (secondary accents) | `#3F93D6` / `#63AB42` |
 | `cream` (primary text) | `#F3EFE7` |
 | `warmgray` (secondary text) | `#9C9A94` |
 | `warmgray-dark` / `warmgray-light` (labels) | `#6E6C67` / `#8A8985` |

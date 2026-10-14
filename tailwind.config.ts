@@ -5,7 +5,9 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        laterite: "#D9622B",
+        gold: "#F0B429",
+        sky: "#3F93D6",
+        leaf: "#63AB42",
         charcoal: {
           DEFAULT: "#181A1B",
           card: "#212325",

@@ -51,7 +51,7 @@ function MaterielList({ items }: { items: string[] }) {
     <ul className="mt-6 space-y-3">
       {items.map((item) => (
         <li key={item} className="flex items-start gap-3 text-sm text-warmgray">
-          <CheckCircle2 size={16} className="mt-0.5 shrink-0 text-laterite" />
+          <CheckCircle2 size={16} className="mt-0.5 shrink-0 text-gold" />
           <span>{item}</span>
         </li>
       ))}
@@ -67,7 +67,7 @@ export default function MaterielPage() {
         <div className="container-page relative z-10 pb-14">
           <p className="label">Moyens matériels</p>
           <h1 className="mt-3 max-w-2xl font-serif text-3xl font-medium leading-tight text-cream drop-shadow-[0_4px_24px_rgba(0,0,0,0.6)] sm:text-4xl">
-            Un parc matériel propre, complété en location<span className="text-laterite">.</span>
+            Un parc matériel propre, complété en location<span className="text-gold">.</span>
           </h1>
         </div>
       </section>
@@ -81,25 +81,25 @@ export default function MaterielPage() {
 
           <div className="mt-12 grid gap-6 lg:grid-cols-2">
             <div className="card">
-              <Truck size={20} className="text-laterite" strokeWidth={1.5} />
+              <Truck size={20} className="text-gold" strokeWidth={1.5} />
               <h2 className="mt-4 font-serif text-lg font-medium text-cream">Matériel en propre</h2>
               <MaterielList items={materielPropre} />
             </div>
 
             <div className="card">
-              <Wrench size={20} className="text-laterite" strokeWidth={1.5} />
+              <Wrench size={20} className="text-gold" strokeWidth={1.5} />
               <h2 className="mt-4 font-serif text-lg font-medium text-cream">Matériel en location</h2>
               <MaterielList items={materielLocation} />
             </div>
           </div>
 
           <div className="card mt-6">
-            <ShieldCheck size={20} className="text-laterite" strokeWidth={1.5} />
+            <ShieldCheck size={20} className="text-gold" strokeWidth={1.5} />
             <h2 className="mt-4 font-serif text-lg font-medium text-cream">Équipements de sécurité</h2>
             <div className="mt-6 grid gap-3 sm:grid-cols-2">
               {equipementsSecurite.map((item) => (
                 <div key={item} className="flex items-center gap-3 text-sm text-warmgray">
-                  <CheckCircle2 size={16} className="shrink-0 text-laterite" />
+                  <CheckCircle2 size={16} className="shrink-0 text-gold" />
                   <span>{item}</span>
                 </div>
               ))}

@@ -4,11 +4,11 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 
-// Marqueur custom (cercle latérite) — évite le bug classique des icônes par défaut
+// Marqueur custom (cercle doré) — évite le bug classique des icônes par défaut
 // de Leaflet cassées par les bundlers, puisqu'on n'utilise jamais L.Icon.Default.
 const markerIcon = L.divIcon({
   className: "",
-  html: '<span style="display:block;width:14px;height:14px;border-radius:9999px;background:#D9622B;border:2px solid #F3EFE7;box-shadow:0 0 0 4px rgba(217,98,43,0.25)"></span>',
+  html: '<span class="block size-3.5 rounded-full border-2 border-cream bg-gold ring-4 ring-gold/25"></span>',
   iconSize: [14, 14],
   iconAnchor: [7, 7],
 });

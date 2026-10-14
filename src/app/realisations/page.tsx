@@ -12,7 +12,7 @@ export default function RealisationsPage() {
         <div className="container-page">
           <p className="label">Nos réalisations</p>
           <h1 className="section-title mt-3">
-            Des chantiers menés à bien depuis 2016<span className="text-laterite">.</span>
+            Des chantiers menés à bien depuis 2016<span className="text-gold">.</span>
           </h1>
           <p className="section-intro">
             Depuis 2016, MECEF ET FILS a mené à bien des chantiers variés, pour le compte

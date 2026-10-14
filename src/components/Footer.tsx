@@ -27,7 +27,7 @@ export default function Footer() {
           <ul className="mt-4 space-y-2">
             {links.map((link) => (
               <li key={link.href}>
-                <Link href={link.href} className="text-sm text-warmgray transition-colors hover:text-laterite">
+                <Link href={link.href} className="text-sm text-warmgray transition-colors hover:text-gold">
                   {link.label}
                 </Link>
               </li>
@@ -39,16 +39,16 @@ export default function Footer() {
           <p className="label">Contact</p>
           <ul className="mt-4 space-y-3 text-sm text-warmgray">
             <li className="flex items-start gap-2">
-              <MapPin size={16} className="mt-0.5 shrink-0 text-laterite" />
+              <MapPin size={16} className="mt-0.5 shrink-0 text-gold" />
               <span>Siguiri Koura I, Commune de Siguiri, République de Guinée</span>
             </li>
             <li className="flex items-center gap-2">
-              <Phone size={16} className="shrink-0 text-laterite" />
+              <Phone size={16} className="shrink-0 text-gold" />
               <span>622 06 78 37 / 664 70 05 44</span>
             </li>
             <li className="flex items-center gap-2">
-              <Mail size={16} className="shrink-0 text-laterite" />
-              <a href="mailto:2017fakolymamby@gmail.com" className="hover:text-laterite">
+              <Mail size={16} className="shrink-0 text-gold" />
+              <a href="mailto:2017fakolymamby@gmail.com" className="hover:text-gold">
                 2017fakolymamby@gmail.com
               </a>
             </li>

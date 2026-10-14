@@ -3,6 +3,10 @@
 import { useEffect, useRef, useState } from "react";
 import { stats } from "@/data/stats";
 
+// Une couleur par chiffre, dans l'ordre du tableau — reprend les 3 accents du logo
+// (or, bleu, vert) plutôt qu'une seule couleur uniforme pour les 4 statistiques.
+const accentByIndex = ["text-gold", "text-sky", "text-leaf", "text-cream"];
+
 export default function Stats() {
   const ref = useRef<HTMLDivElement>(null);
   const [started, setStarted] = useState(false);
@@ -32,9 +36,9 @@ export default function Stats() {
   return (
     <section ref={ref} className="border-b border-charcoal-border bg-charcoal">
       <div className="container-page grid divide-y divide-charcoal-border sm:grid-cols-4 sm:divide-x sm:divide-y-0">
-        {stats.map((stat) => (
+        {stats.map((stat, index) => (
           <div key={stat.label} className="px-4 py-10 text-center first:pt-10 sm:py-14">
-            <p className="font-serif text-3xl font-medium text-laterite sm:text-4xl">
+            <p className={`font-serif text-3xl font-medium sm:text-4xl ${accentByIndex[index]}`}>
               <AnimatedCount target={stat.target} suffix={stat.suffix} started={started} />
             </p>
             <p className="mt-2 font-mono text-[11px] uppercase tracking-[0.15em] text-warmgray">

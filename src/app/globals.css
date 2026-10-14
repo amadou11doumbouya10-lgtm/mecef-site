@@ -34,16 +34,35 @@
     @apply inline-flex items-center justify-center gap-2 rounded-sm px-6 py-3 font-mono text-xs font-medium uppercase tracking-[0.15em] transition-colors;
   }
   .btn-primary {
-    @apply btn bg-laterite text-cream hover:bg-laterite/90;
+    @apply btn bg-gold text-cream hover:bg-gold/90;
   }
   .btn-outline {
-    @apply btn border border-warmgray-dark text-cream hover:border-laterite hover:text-laterite;
+    @apply btn border border-warmgray-dark text-cream hover:border-gold hover:text-gold;
   }
   .card {
     @apply rounded-sm border border-charcoal-border bg-charcoal-card p-6;
   }
   .badge {
     @apply inline-flex items-center gap-2 rounded-full border border-charcoal-border px-4 py-1.5 font-mono text-[11px] font-medium uppercase tracking-[0.2em] text-warmgray;
+  }
+}
+
+/* Défilement horizontal en boucle du bandeau partenaires (la liste est dupliquée en JSX,
+   translateX(-50%) recale exactement sur la 2e copie pour une boucle sans à-coup). */
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+.marquee-track {
+  animation: marquee 28s linear infinite;
+}
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
   }
 }
 
@@ -73,7 +92,7 @@
   color: #9c9a94;
 }
 .dark-tiles .leaflet-control-attribution a {
-  color: #d9622b;
+  color: #f0b429;
 }
 .dark-tiles .leaflet-popup-content-wrapper,
 .dark-tiles .leaflet-popup-tip {

@@ -15,6 +15,8 @@ export interface Realisation {
   beneficiaire?: string;
   categorie: CategorieRealisation;
   description?: string;
+  /** Par défaut "Achevé" si absent — toutes les réalisations actuelles sont terminées. */
+  statut?: "Achevé" | "En cours";
 }
 
 export const realisations: Realisation[] = [

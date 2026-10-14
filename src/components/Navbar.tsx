@@ -38,7 +38,7 @@ export default function Navbar() {
                   <Link
                     href={link.href}
                     className={`font-mono text-[11px] font-medium uppercase tracking-[0.15em] transition-colors ${
-                      active ? "text-laterite" : "text-warmgray hover:text-cream"
+                      active ? "text-gold" : "text-warmgray hover:text-cream"
                     }`}
                   >
                     {link.label}
@@ -70,7 +70,7 @@ export default function Navbar() {
                     href={link.href}
                     onClick={() => setOpen(false)}
                     className={`block rounded px-2 py-2 font-mono text-xs font-medium uppercase tracking-[0.15em] ${
-                      active ? "text-laterite" : "text-warmgray hover:text-cream"
+                      active ? "text-gold" : "text-warmgray hover:text-cream"
                     }`}
                   >
                     {link.label}

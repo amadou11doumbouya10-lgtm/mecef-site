@@ -9,7 +9,7 @@ export default function HomeCta() {
           <p className="label">Prêt à démarrer ?</p>
           <h2 className="section-title mt-3">
             Parlons de votre prochain chantier
-            <span className="text-laterite">.</span>
+            <span className="text-gold">.</span>
           </h2>
           <p className="section-intro mx-auto">
             Institutions publiques, programmes de développement ou clients privés — MECEF ET

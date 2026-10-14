@@ -39,13 +39,13 @@ export default function NotreMission() {
           <p className="label">Notre mission</p>
           <h2 className="section-title mt-3">
             Construire des chantiers qui inspirent confiance
-            <span className="text-laterite">.</span>
+            <span className="text-gold">.</span>
           </h2>
 
           <div className="mt-8 space-y-6">
             {points.map(({ icon: Icon, title, description }) => (
               <div key={title} className="flex gap-4">
-                <span className="flex size-9 shrink-0 items-center justify-center rounded bg-laterite/10 text-laterite">
+                <span className="flex size-9 shrink-0 items-center justify-center rounded bg-gold/10 text-gold">
                   <Icon size={18} strokeWidth={1.5} />
                 </span>
                 <div>
