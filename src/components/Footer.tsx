@@ -57,9 +57,20 @@ export default function Footer() {
       </div>
 
       <div className="border-t border-charcoal-border">
-        <div className="container-page flex flex-col gap-2 py-6 font-mono text-[11px] uppercase tracking-wide text-warmgray-dark sm:flex-row sm:items-center sm:justify-between">
+        <div className="container-page flex flex-col gap-2 py-6 font-mono text-[11px] uppercase tracking-wide text-warmgray-dark lg:flex-row lg:items-center lg:justify-between">
           <p>© {new Date().getFullYear()} MECEF ET FILS. Tous droits réservés.</p>
           <p>RCCM : RCCM/GC-KAL/069.093A/2016 · NIF : 966123945</p>
+          <p>
+            Site réalisé par{" "}
+            <a
+              href="https://vision-amah.vercel.app"
+              target="_blank"
+              rel="noopener"
+              className="text-warmgray transition-colors hover:text-gold"
+            >
+              Vision Amah
+            </a>
+          </p>
         </div>
       </div>
     </footer>
