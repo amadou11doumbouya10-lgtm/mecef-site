@@ -1,24 +1,18 @@
 import Link from "next/link";
-import { Clock, Coins, Building2 } from "lucide-react";
+import { MapPin } from "lucide-react";
 import HeroBackground from "@/components/HeroBackground";
-import { stats } from "@/data/stats";
 
-// Les 3 chiffres les plus parlants, en cartes flottantes sur l'image — le bandeau complet
-// (4 chiffres) reste juste en dessous du hero (Stats.tsx), rien n'est retiré ni dupliqué en trop.
-const heroStats = [
-  { icon: Clock, title: "Expérience", stat: stats[0] },
-  { icon: Coins, title: "Chantiers réalisés", stat: stats[1] },
-  { icon: Building2, title: "Références", stat: stats[2] },
-];
+// Les chiffres clés ne sont plus en cartes flottantes ici : ils sont dans le bandeau or
+// (Stats.tsx) juste sous le hero — les afficher aux deux endroits faisait doublon.
 
-// Photos libres de droits (Pexels / Unsplash, licences gratuites) — pas encore de vraies photos
-// de chantier MECEF. À remplacer dès que le client en fournit.
-const heroImages: { src: string; alt: string }[] = [
-  { src: "/images/hero-1.jpg", alt: "Ouvriers sur un chantier de construction" },
-  { src: "/images/hero-2.jpg", alt: "Travaux de gros œuvre" },
-  { src: "/images/hero-3.jpg", alt: "Bâtiment en construction" },
-  { src: "/images/hero-4.jpg", alt: "Chantier de construction résidentielle" },
-  { src: "/images/hero-5.jpg", alt: "Chantier de maçonnerie" },
+// Vraies photos de chantier MECEF (fournies par le client, novembre 2026). Sources en portrait :
+// `position` règle la bande visible sur desktop, le mobile affiche la photo presque entière.
+const heroImages: { src: string; alt: string; position?: string }[] = [
+  { src: "/images/hero-1.jpg", alt: "Équipe MECEF au coulage du béton d'un ouvrage", position: "50% 40%" },
+  { src: "/images/hero-2.jpg", alt: "Compactage d'une voirie, équipe de chantier sur la plateforme", position: "50% 30%" },
+  { src: "/images/hero-3.jpg", alt: "Ferraillage d'un dalot dans son coffrage" },
+  { src: "/images/hero-4.jpg", alt: "Lame de niveleuse au réglage de la plateforme en latérite" },
+  { src: "/images/hero-5.jpg", alt: "Ferraillage en double nappe d'une voirie en béton armé", position: "50% 40%" },
 ];
 
 export default function Hero() {
@@ -27,64 +21,39 @@ export default function Hero() {
     <section className="relative -mt-20 flex min-h-screen w-full items-center justify-center overflow-hidden bg-charcoal">
       <HeroBackground images={heroImages} />
 
-      <div className="container-page relative z-10 flex flex-col items-start py-24 text-left sm:py-32">
-        <span className="badge">
+      <div className="container-page relative z-10 flex flex-col items-start py-28 text-left sm:py-36">
+        <span className="badge border-cream/30 text-cream">
           <span className="size-1.5 rounded-full bg-gold" />
           Siguiri — Conakry — Depuis 2016
         </span>
 
-        <h1 className="mt-8 max-w-2xl font-serif text-4xl font-medium leading-tight text-cream drop-shadow-[0_4px_24px_rgba(0,0,0,0.6)] sm:text-6xl lg:max-w-xl xl:max-w-2xl">
-          Construction, Aménagement, Équipements en Guinée depuis 2016
+        <h1 className="mt-8 max-w-2xl font-serif text-4xl font-medium leading-[1.05] tracking-tight text-cream drop-shadow-[0_4px_24px_rgba(0,0,0,0.6)] sm:text-6xl lg:max-w-xl lg:text-7xl xl:max-w-2xl">
+          Construction, aménagement, équipements en Guinée depuis 2016
           <span className="text-gold">.</span>
         </h1>
 
-        <p className="mt-6 max-w-2xl text-base leading-relaxed text-warmgray sm:text-lg lg:max-w-lg">
+        <p className="mt-6 max-w-2xl text-base leading-relaxed text-cream/85 sm:text-lg lg:max-w-lg">
           Une entreprise guinéenne de bâtiment et travaux publics, ancrée à Siguiri, active à
           travers la Haute Guinée et Conakry. De la construction d&apos;écoles à la réalisation de
           travaux routiers, MECEF ET FILS accompagne institutions publiques et clients privés avec
           rigueur et disponibilité.
         </p>
 
-        <div className="mt-10 flex flex-wrap justify-start gap-4">
+        <div className="mt-10 flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:flex-wrap sm:gap-4">
           <Link href="/realisations" className="btn-primary">
-            Voir nos réalisations
+            Voir nos réalisations →
           </Link>
-          <Link href="/contact" className="btn-outline">
+          <Link href="/contact" className="btn-outline border-cream/50">
             Nous contacter
           </Link>
         </div>
       </div>
 
-      <div className="absolute right-6 top-36 z-10 hidden w-64 flex-col gap-4 lg:flex xl:right-16">
-        {heroStats.map(({ icon: Icon, title, stat }) => (
-          <div
-            key={title}
-            className="rounded-sm border border-charcoal-border/60 bg-charcoal/60 p-4 backdrop-blur-sm"
-          >
-            <div className="flex items-center gap-2">
-              <span className="flex size-7 items-center justify-center rounded-full bg-charcoal-card/80 text-gold">
-                <Icon size={14} strokeWidth={1.5} />
-              </span>
-              <p className="font-mono text-[10px] uppercase tracking-[0.15em] text-warmgray">{title}</p>
-            </div>
-            <p className="mt-3 font-serif text-2xl font-medium text-cream">
-              {stat.target}
-              {stat.suffix}
-            </p>
-            <p className="mt-1 text-xs text-warmgray">{stat.label}</p>
-          </div>
-        ))}
-      </div>
-
-      <svg
-        className="absolute inset-x-0 bottom-0 z-10 h-28 w-full sm:h-36"
-        viewBox="0 0 1440 140"
-        preserveAspectRatio="none"
-        aria-hidden="true"
-      >
-        <path d="M0,140 L640,30 L800,30 L1440,140 Z" className="fill-charcoal" />
-        <path d="M0,140 L640,30 L800,30 L1440,140" fill="none" className="stroke-charcoal-border" strokeWidth="2" />
-      </svg>
+      {/* Toutes les photos du carrousel viennent du chantier du Lot 10 (cf. CONTENU_SITE.md). */}
+      <p className="absolute bottom-8 right-6 z-10 hidden items-center gap-2 rounded-sm bg-charcoal/75 px-3.5 py-2 font-mono text-[11px] uppercase tracking-[0.14em] text-cream sm:flex lg:right-12">
+        <MapPin size={14} className="text-sky" aria-hidden />
+        Lot 10 — AGEROUTE · Siguiri · 2023
+      </p>
     </section>
   );
 }

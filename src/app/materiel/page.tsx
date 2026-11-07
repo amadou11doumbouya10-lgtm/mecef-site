@@ -6,14 +6,15 @@ export const metadata: Metadata = {
   title: "Moyens matériels — MECEF ET FILS",
 };
 
-// Photos libres de droits (Pexels), illustrations génériques de matériel de chantier —
-// pas des photos du parc matériel réel de MECEF.
-const materielImages: { src: string; alt: string }[] = [
-  { src: "/images/materiel-1.jpg", alt: "Camion benne déchargeant des matériaux" },
-  { src: "/images/materiel-2.jpg", alt: "Compacteur et finisseur sur un chantier routier" },
-  { src: "/images/materiel-3.jpg", alt: "Rouleau vibrant sur enrobé" },
-  { src: "/images/materiel-4.jpg", alt: "Pelleteuse et camion sur un chantier" },
-  { src: "/images/materiel-5.jpg", alt: "Ferraillage sur un chantier" },
+// Vraies photos d'engins sur les chantiers MECEF (fournies par le client) — engins en propre
+// ou en location, les légendes ne précisent donc pas la propriété. Le bandeau est très étroit
+// (~3:1 sur desktop) : `position` cadre la bande utile de chaque photo portrait.
+const materielImages: { src: string; alt: string; position?: string }[] = [
+  { src: "/images/materiel-1.jpg", alt: "Niveleuse au réglage de la plateforme", position: "50% 40%" },
+  { src: "/images/materiel-2.jpg", alt: "Compacteur BOMAG sur la plateforme" },
+  { src: "/images/materiel-3.jpg", alt: "Bétonnière déversant le béton dans une brouette", position: "50% 40%" },
+  { src: "/images/materiel-4.jpg", alt: "Cylindre de compacteur sur la plateforme en latérite", position: "50% 55%" },
+  { src: "/images/materiel-5.jpg", alt: "Roues de niveleuse sur la plateforme", position: "50% 55%" },
 ];
 
 const materielPropre = [

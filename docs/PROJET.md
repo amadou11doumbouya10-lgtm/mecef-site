@@ -3,9 +3,11 @@
 ## Objectif
 
 Site vitrine pour MECEF ET FILS, entreprise guinéenne de bâtiment et travaux publics (BTP),
-basée à Siguiri, active en Haute Guinée et à Conakry depuis 2016. Six pages statiques,
-sans base de données : le contenu vient soit de `src/data/`, soit est écrit directement
-dans les composants de section.
+basée à Siguiri, active en Haute Guinée et à Conakry depuis 2016. Six pages principales et
+quatre pages de pôle d'activité, toutes statiques, sans base de données : le contenu vient
+soit de `src/data/`, soit est écrit directement dans les composants de section.
+
+En ligne sur https://mecef-site.vercel.app (voir [Déploiement](#déploiement)).
 
 ## Stack
 
@@ -35,30 +37,42 @@ src/
     apple-icon.png          icône iOS, fond charbon plein
     opengraph-image.png     image de partage social (convention App Router)
   components/               un composant par section de page
-    Navbar.tsx
-    Hero.tsx / HeroBackground.tsx   hero plein écran, carrousel photo en fondu enchaîné (fallback SVG géométrique si aucune image)
-    Sectors.tsx              4 pôles, cliquables vers /activites/[slug]
-    Stats.tsx                bandeau de chiffres clés, compteur animé au scroll
-    Realisations.tsx         variant="featured" (accueil) | variant="full" (filtres par catégorie) ; exporte aussi RealisationCard
+    Navbar.tsx               transparente en haut de page, fond charbon au défilement, bouton « Nous contacter » (voir plus bas)
+    Hero.tsx / HeroBackground.tsx   hero plein écran, carrousel photo en fondu enchaîné (fallback SVG géométrique si aucune image), légende « Lot 10 · Siguiri · 2023 »
+    Stats.tsx                bandeau or des chiffres clés sous le hero, compteur animé au scroll
+    PartnerStrip.tsx         rangée fixe des partenaires (logo officiel pour AGEROUTE et UCEP, texte pour les autres)
+    HomeQuiSommesNous.tsx    section crème : résumé de /qui-sommes-nous (présentation, repères, photo, lien)
+    Sectors.tsx              4 cartes photo des pôles, cliquables vers /activites/[slug]
+    HomeRealisations.tsx     « Réalisation phare » (Lot 10 : mosaïque + chiffres) puis tableau « Autres références »
+    HomeCta.tsx              bandeau or d'appel à l'action final de l'accueil
+    Realisations.tsx         grille filtrable par catégorie de /realisations ; exporte aussi RealisationCard (avec badge de statut Achevé / En cours)
+    RealisationGallery.tsx   galerie photo d'un chantier (champ `photos` de realisations.ts), en bas de /realisations
     PoleActiviteDetail.tsx   template partagé par les 4 pages /activites/*
-    Direction.tsx            bloc "Direction" avec emplacement portrait (prop portraitUrl optionnelle)
+    Direction.tsx            bloc "Direction" avec emplacement portrait (prop portraitUrl optionnelle, pas encore fournie)
+    NotreMission.tsx         section "Notre mission" de /qui-sommes-nous
     Partenariats.tsx
     Contact.tsx
-    Footer.tsx
+    Footer.tsx               coordonnées, mentions légales (RCCM/NIF) et signature "Site réalisé par Vision Amah"
     Reveal.tsx               wrapper animation fade-in au scroll (respecte prefers-reduced-motion)
     RegionMap.tsx            wrapper "use client" + next/dynamic(ssr:false) autour de LeafletMapInner
     LeafletMapInner.tsx      la vraie carte Leaflet (marqueurs Siguiri/Conakry, tuiles OSM + filtre sombre)
   data/
     realisations.ts         source unique de vérité des chantiers (année, montant, bénéficiaire)
     activites.ts             les 4 pôles d'activité (description + réalisations liées par titre/lieu)
+    stats.ts                 chiffres clés, affichés dans le bandeau or Stats.tsx
   lib/
     site.ts                 SITE_URL + coordonnées de l'entreprise, réutilisés par metadataBase/sitemap/JSON-LD
 public/
   logo/
     mecef-mark.png           pictogramme seul, fond transparent — usage inline (Navbar, Footer)
     mecef-logo.png            logo complet (pictogramme + "MECEF"), fond transparent
+    partenaires/              logos officiels vérifiés uniquement (AGEROUTE, UCEP) ; les autres partenaires restent en texte
   images/
-    hero-1.jpg … hero-5.jpg  photos libres de droits (Pexels/Unsplash) pour le carrousel du hero — à remplacer par de vraies photos de chantier MECEF dès réception
+    hero-1.jpg … hero-5.jpg  vraies photos de chantier MECEF pour le carrousel du hero (portrait, cadrage desktop via `position`)
+    materiel-1.jpg … materiel-5.jpg   vraies photos d'engins sur chantier MECEF, bandeau carrousel de /materiel
+    activite-*.jpg           une photo réelle par page /activites/* (recadrée 16:9)
+    realisations/lot-10-*.jpg   galerie du Lot 10 (AGEROUTE, Siguiri) — 12 photos 3:4, dans l'ordre des phases du chantier
+    mission.jpg              photo réelle de la section "Notre mission" (recadrée 4:3)
 docs/
   PROJET.md                  ce fichier
   CONTENU_SITE.md            contenu texte source de toutes les pages
@@ -78,6 +92,16 @@ filtre CSS (`filter: invert(1) hue-rotate(180deg) ...`) appliqué uniquement à
 `.leaflet-tile-pane` dans `globals.css`, pour ne pas affecter les marqueurs/popups. Marqueurs
 custom en `L.divIcon` (jamais `L.Icon.Default`, dont les chemins d'icônes par défaut sont cassés
 par les bundlers).
+
+### Barre de navigation transparente (`Navbar.tsx`)
+
+La barre reste `sticky` mais n'a pas de fond en haut de page ; elle reprend son fond charbon
+(`bg-charcoal/95` + bordure) dès que la page défile de plus de 8 px ou que le menu mobile est
+ouvert. Pour que la photo passe réellement sous la barre, les sections à photo plein cadre en
+haut de page (le hero de l'accueil, le bandeau de `/materiel`) ont un `-mt-20` qui compense la
+hauteur de la barre (`h-20`). **Si la hauteur de la Navbar change, mettre à jour ces deux
+`-mt-20`.** Les autres pages commencent sur le fond charbon : la barre transparente s'y fond
+sans rien recouvrir.
 
 ### Pages pôles d'activité (`src/app/activites/*`, `src/data/activites.ts`)
 
@@ -135,9 +159,25 @@ Tant que `RESEND_API_KEY` est vide, `sendContactMessage` (`src/app/contact/actio
 proprement avec un message invitant à contacter MECEF par téléphone, plutôt que de laisser
 Resend renvoyer une erreur d'authentification.
 
-`NEXT_PUBLIC_SITE_URL` est un placeholder tant que MECEF ET FILS n'a pas de nom de domaine
-réel — il alimente `metadataBase`, `sitemap.ts`, `robots.ts` et le schéma JSON-LD
-(`src/lib/site.ts`). À mettre à jour dès que le vrai domaine est acheté.
+`NEXT_PUBLIC_SITE_URL` alimente `metadataBase`, `sitemap.ts`, `robots.ts` et le schéma
+JSON-LD (`src/lib/site.ts`). Sans valeur, il retombe sur `https://mecefetfils.com`, un domaine
+qui n'appartient pas encore à MECEF. En production (Vercel), il vaut
+`https://mecef-site.vercel.app` ; à remplacer partout dès que le vrai domaine est acheté.
+
+## Déploiement
+
+Hébergé sur **Vercel**, projet `vision-amah/mecef-site`, URL de production
+https://mecef-site.vercel.app.
+
+- Le dépôt GitHub (`amadou11doumbouya10-lgtm/mecef-site`) **n'est pas connecté** à
+  l'intégration Git de Vercel : un `git push` ne déploie rien. Déploiement manuel depuis le
+  poste, avec la CLI Vercel connectée au compte : `vercel --prod`. Pour automatiser, connecter
+  le dépôt dans Vercel → Settings → Git.
+- Variables définies sur Vercel (Production) : `NEXT_PUBLIC_SITE_URL=https://mecef-site.vercel.app`.
+  `RESEND_API_KEY` n'y est pas définie : le formulaire de contact affiche donc aussi son
+  message d'erreur en production.
+- Sous Windows, arrêter le serveur de dev (`npm run dev`) avant un `npm run build` local : les
+  deux utilisent `.next/` et le build échoue en `EPERM` sinon.
 
 ## SEO
 

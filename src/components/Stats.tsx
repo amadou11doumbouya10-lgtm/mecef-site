@@ -3,10 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 import { stats } from "@/data/stats";
 
-// Une couleur par chiffre, dans l'ordre du tableau — reprend les 3 accents du logo
-// (or, bleu, vert) plutôt qu'une seule couleur uniforme pour les 4 statistiques.
-const accentByIndex = ["text-gold", "text-sky", "text-leaf", "text-cream"];
-
+// Bandeau or juste sous le hero (maquette « Mélange A + B ») : texte charbon sur or (≈ 9:1).
+// Remplace l'ancien bandeau charbon à 4 couleurs, jugé dispersé.
 export default function Stats() {
   const ref = useRef<HTMLDivElement>(null);
   const [started, setStarted] = useState(false);
@@ -34,16 +32,17 @@ export default function Stats() {
   }, []);
 
   return (
-    <section ref={ref} className="border-b border-charcoal-border bg-charcoal">
-      <div className="container-page grid divide-y divide-charcoal-border sm:grid-cols-4 sm:divide-x sm:divide-y-0">
-        {stats.map((stat, index) => (
-          <div key={stat.label} className="px-4 py-10 text-center first:pt-10 sm:py-14">
-            <p className={`font-serif text-3xl font-medium sm:text-4xl ${accentByIndex[index]}`}>
+    <section ref={ref} aria-label="Chiffres clés" className="bg-gold text-charcoal">
+      <div className="container-page grid grid-cols-2 lg:grid-cols-4">
+        {stats.map((stat) => (
+          <div
+            key={stat.label}
+            className="py-8 pr-4 sm:py-10 lg:border-l lg:border-charcoal/20 lg:px-8 lg:first:border-l-0 lg:first:pl-0"
+          >
+            <p className="font-serif text-3xl font-semibold leading-none sm:text-4xl">
               <AnimatedCount target={stat.target} suffix={stat.suffix} started={started} />
             </p>
-            <p className="mt-2 font-mono text-[11px] uppercase tracking-[0.15em] text-warmgray">
-              {stat.label}
-            </p>
+            <p className="mt-3 text-sm leading-snug sm:text-[15px]">{stat.label}</p>
           </div>
         ))}
       </div>

@@ -12,7 +12,6 @@ const links = [
   { href: "/realisations", label: "Réalisations" },
   { href: "/materiel", label: "Matériel" },
   { href: "/partenariats", label: "Partenariats" },
-  { href: "/contact", label: "Contact" },
 ];
 
 export default function Navbar() {
@@ -37,24 +36,28 @@ export default function Navbar() {
         solid ? "border-charcoal-border bg-charcoal/95 backdrop-blur" : "border-transparent bg-transparent"
       }`}
     >
-      <div className="container-page flex h-20 items-center justify-between">
+      <div className="container-page flex h-20 items-center justify-between gap-6">
         <Link href="/" className="flex items-center gap-3">
           <Image src="/logo/mecef-mark.png" alt="" width={40} height={40} className="size-10 object-contain" />
-          <span className="font-mono text-xs font-medium uppercase tracking-[0.2em] text-cream">
-            MECEF <span className="text-warmgray">/ FILS</span>
+          <span className="font-mono text-xs font-semibold uppercase tracking-[0.2em] text-cream">
+            MECEF ET FILS
           </span>
         </Link>
 
-        <nav className="hidden md:block">
-          <ul className="flex items-center gap-8">
+        {/* Le lien Contact est remplacé sur desktop par le bouton « Nous contacter ». */}
+        <nav className="hidden lg:block" aria-label="Navigation principale">
+          <ul className="flex items-center gap-7">
             {links.map((link) => {
               const active = pathname === link.href;
               return (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className={`font-mono text-[11px] font-medium uppercase tracking-[0.15em] transition-colors ${
-                      active ? "text-gold" : "text-warmgray hover:text-cream"
+                    aria-current={active ? "page" : undefined}
+                    className={`inline-block border-b-2 py-3 font-mono text-xs font-medium uppercase tracking-[0.14em] transition-colors ${
+                      active
+                        ? "border-gold text-gold"
+                        : "border-transparent text-cream/80 hover:text-cream"
                     }`}
                   >
                     {link.label}
@@ -65,10 +68,15 @@ export default function Navbar() {
           </ul>
         </nav>
 
+        <Link href="/contact" className="btn-primary hidden min-h-11 px-5 lg:inline-flex">
+          Nous contacter
+        </Link>
+
         <button
           type="button"
-          className="text-cream md:hidden"
+          className="flex size-11 items-center justify-center rounded-sm text-cream lg:hidden"
           aria-label={open ? "Fermer le menu" : "Ouvrir le menu"}
+          aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
         >
           {open ? <X size={24} /> : <Menu size={24} />}
@@ -76,7 +84,7 @@ export default function Navbar() {
       </div>
 
       {open && (
-        <nav className="border-t border-charcoal-border bg-charcoal md:hidden">
+        <nav className="border-t border-charcoal-border bg-charcoal lg:hidden" aria-label="Navigation mobile">
           <ul className="container-page flex flex-col gap-1 py-4">
             {links.map((link) => {
               const active = pathname === link.href;
@@ -85,8 +93,9 @@ export default function Navbar() {
                   <Link
                     href={link.href}
                     onClick={() => setOpen(false)}
-                    className={`block rounded px-2 py-2 font-mono text-xs font-medium uppercase tracking-[0.15em] ${
-                      active ? "text-gold" : "text-warmgray hover:text-cream"
+                    aria-current={active ? "page" : undefined}
+                    className={`block rounded px-2 py-3 font-mono text-xs font-medium uppercase tracking-[0.15em] ${
+                      active ? "text-gold" : "text-cream/80 hover:text-cream"
                     }`}
                   >
                     {link.label}
@@ -94,6 +103,11 @@ export default function Navbar() {
                 </li>
               );
             })}
+            <li className="mt-3">
+              <Link href="/contact" onClick={() => setOpen(false)} className="btn-primary w-full">
+                Nous contacter
+              </Link>
+            </li>
           </ul>
         </nav>
       )}

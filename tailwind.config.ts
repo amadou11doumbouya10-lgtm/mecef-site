@@ -12,8 +12,14 @@ const config: Config = {
           DEFAULT: "#181A1B",
           card: "#212325",
           border: "#2C2E2F",
+          // Texte courant sur les sections crème (contraste ≈ 10:1 sur cream).
+          muted: "#3A3B3C",
         },
-        cream: "#F3EFE7",
+        cream: {
+          DEFAULT: "#F3EFE7",
+          // Filets et séparateurs sur les sections crème.
+          border: "#D8D2C6",
+        },
         warmgray: {
           DEFAULT: "#9C9A94",
           light: "#8A8985",

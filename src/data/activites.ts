@@ -11,7 +11,8 @@ export interface PoleActivite {
   description: string[];
   /** Clés (titre + lieu si besoin de désambiguïser) vers des entrées de data/realisations.ts */
   realisations: { titre: string; lieu?: string }[];
-  /** Illustration générique (pas un chantier MECEF documenté) — même pool que le carrousel du hero. */
+  /** Vraie photo de chantier MECEF, recadrée en 16:9 — illustre le pôle, ce n'est pas
+   *  forcément l'une des références listées dans `realisations`. */
   image: { src: string; alt: string };
 }
 
@@ -27,13 +28,13 @@ export const activites: PoleActivite[] = [
       "Construction métallique et études topographiques.",
     ],
     realisations: [
-      { titre: "Lot 10 — AGEROUTE" },
+      { titre: "Lot 10 — AGEROUTE", lieu: "Siguiri" },
       { titre: "Groupe Scolaire Ousmane Gackou", lieu: "Kankan" },
       { titre: "École primaire", lieu: "Yataya/Filamadina, Ratoma, Conakry" },
       { titre: "École primaire", lieu: "Dabompa, Matoto, Conakry" },
       { titre: "Poste de santé", lieu: "Konsakoro" },
     ],
-    image: { src: "/images/hero-1.jpg", alt: "Ouvriers sur un chantier de construction" },
+    image: { src: "/images/activite-construction.jpg", alt: "Ouvriers au coulage d'un dalot" },
   },
   {
     slug: "amenagement",
@@ -42,7 +43,7 @@ export const activites: PoleActivite[] = [
     intro: "Terrassement, digues, voiries.",
     description: ["Terrassement, digues, voiries."],
     realisations: [{ titre: "Digues et routes", lieu: "Mandiana (Haute Guinée)" }],
-    image: { src: "/images/hero-5.jpg", alt: "Travaux de maçonnerie sur un chantier" },
+    image: { src: "/images/activite-amenagement.jpg", alt: "Voirie en cours de terrassement, pelle hydraulique en arrière-plan" },
   },
   {
     slug: "equipements-fourniture",
@@ -54,7 +55,7 @@ export const activites: PoleActivite[] = [
       { titre: "Direction de l'Urbanisme", lieu: "Siguiri" },
       { titre: "Préfecture de Siguiri" },
     ],
-    image: { src: "/images/hero-2.jpg", alt: "Matériaux et structures sur un chantier" },
+    image: { src: "/images/activite-equipements.jpg", alt: "Armatures en acier mises en place sur le chantier" },
   },
   {
     slug: "prestations-diverses",
@@ -63,6 +64,6 @@ export const activites: PoleActivite[] = [
     intro: "Selon les besoins de nos partenaires.",
     description: ["Selon les besoins de nos partenaires.", "Suivi-évaluation des travaux de chantier et études d'ingénierie."],
     realisations: [],
-    image: { src: "/images/hero-3.jpg", alt: "Bâtiment en fin de construction" },
+    image: { src: "/images/activite-prestations.jpg", alt: "Suivi de chantier sur le ferraillage d'une voirie" },
   },
 ];

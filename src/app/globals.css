@@ -22,7 +22,7 @@
     @apply py-16 sm:py-24;
   }
   .label {
-    @apply font-mono text-[11px] font-medium uppercase tracking-[0.2em] text-warmgray;
+    @apply font-mono text-xs font-medium uppercase tracking-[0.18em] text-warmgray;
   }
   .section-title {
     @apply font-serif text-3xl font-medium tracking-tight text-cream sm:text-4xl;
@@ -31,38 +31,27 @@
     @apply mt-4 max-w-2xl text-warmgray leading-relaxed;
   }
   .btn {
-    @apply inline-flex items-center justify-center gap-2 rounded-sm px-6 py-3 font-mono text-xs font-medium uppercase tracking-[0.15em] transition-colors;
+    @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-sm px-6 py-3 font-mono text-xs font-semibold uppercase tracking-[0.14em] transition-colors;
   }
+  /* Texte charbon sur or (≈ 9:1) : le crème sur or ne faisait que ≈ 1,5:1, illisible. */
   .btn-primary {
-    @apply btn bg-gold text-cream hover:bg-gold/90;
+    @apply btn bg-gold text-charcoal hover:bg-gold/90;
   }
   .btn-outline {
     @apply btn border border-warmgray-dark text-cream hover:border-gold hover:text-gold;
+  }
+  /* Variantes pour les fonds clairs (sections crème, bandeaux or). */
+  .btn-dark {
+    @apply btn bg-charcoal text-cream hover:bg-charcoal-card;
+  }
+  .btn-outline-dark {
+    @apply btn border border-charcoal text-charcoal hover:bg-charcoal hover:text-cream;
   }
   .card {
     @apply rounded-sm border border-charcoal-border bg-charcoal-card p-6;
   }
   .badge {
     @apply inline-flex items-center gap-2 rounded-full border border-charcoal-border px-4 py-1.5 font-mono text-[11px] font-medium uppercase tracking-[0.2em] text-warmgray;
-  }
-}
-
-/* Défilement horizontal en boucle du bandeau partenaires (la liste est dupliquée en JSX,
-   translateX(-50%) recale exactement sur la 2e copie pour une boucle sans à-coup). */
-@keyframes marquee {
-  to {
-    transform: translateX(-50%);
-  }
-}
-.marquee-track {
-  animation: marquee 28s linear infinite;
-}
-.marquee-track:hover {
-  animation-play-state: paused;
-}
-@media (prefers-reduced-motion: reduce) {
-  .marquee-track {
-    animation: none;
   }
 }
 

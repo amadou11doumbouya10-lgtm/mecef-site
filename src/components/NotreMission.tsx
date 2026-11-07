@@ -28,8 +28,8 @@ export default function NotreMission() {
       <div className="container-page grid items-center gap-12 lg:grid-cols-2">
         <Reveal className="relative aspect-[4/3] w-full overflow-hidden rounded-sm border border-charcoal-border bg-charcoal-card">
           <Image
-            src="/images/hero-4.jpg"
-            alt="Chantier de construction résidentiel"
+            src="/images/mission.jpg"
+            alt="Équipe MECEF équipée de casques et gilets au coulage du béton"
             fill
             className="object-cover"
           />

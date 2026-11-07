@@ -18,41 +18,34 @@ const partners: Partner[] = [
   { name: "PDLG" },
 ];
 
+// Rangée fixe (plus de défilement en boucle) : avec 5 partenaires, la liste dupliquée du
+// défilement apparaissait deux fois à l'écran sur desktop et ressemblait à un bug.
 export default function PartnerStrip() {
   return (
-    <section className="border-b border-charcoal-border bg-charcoal py-10">
-      <div className="container-page">
-        <p className="label text-center">Partenaires institutionnels</p>
-        <div className="mt-6 overflow-hidden">
-          <div className="marquee-track flex w-max items-center gap-x-10">
-            {[...partners, ...partners].map((partner, i) =>
-              partner.logo ? (
+    <section aria-label="Partenaires" className="border-b border-charcoal-border bg-charcoal">
+      <div className="container-page flex flex-col gap-5 py-9 lg:flex-row lg:items-center lg:justify-between lg:gap-10">
+        <p className="label shrink-0">Partenaires institutionnels</p>
+        <ul className="flex flex-wrap items-center gap-x-10 gap-y-4">
+          {partners.map((partner) => (
+            <li key={partner.name}>
+              {partner.logo ? (
                 <a
-                  key={partner.name + i}
                   href={partner.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex h-14 shrink-0 items-center rounded-sm bg-cream px-4 transition-opacity hover:opacity-80"
+                  className="group flex items-center gap-3 font-serif text-lg text-cream transition-colors hover:text-gold"
                 >
-                  <Image
-                    src={partner.logo}
-                    alt={partner.name}
-                    width={120}
-                    height={40}
-                    className="h-8 w-auto object-contain sm:h-9"
-                  />
+                  <span className="flex size-9 items-center justify-center rounded-sm bg-cream">
+                    <Image src={partner.logo} alt="" width={28} height={28} className="size-7 object-contain" />
+                  </span>
+                  {partner.name}
                 </a>
               ) : (
-                <span
-                  key={partner.name + i}
-                  className="shrink-0 font-mono text-xs uppercase tracking-[0.15em] text-warmgray"
-                >
-                  {partner.name}
-                </span>
-              )
-            )}
-          </div>
-        </div>
+                <span className="font-serif text-lg text-cream">{partner.name}</span>
+              )}
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );

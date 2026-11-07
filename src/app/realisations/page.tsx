@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Realisations from "@/components/Realisations";
+import RealisationGallery from "@/components/RealisationGallery";
+import { realisations, realisationSlug } from "@/data/realisations";
 
 export const metadata: Metadata = {
   title: "Réalisations — MECEF ET FILS",
@@ -22,7 +24,14 @@ export default function RealisationsPage() {
         </div>
       </section>
 
-      <Realisations variant="full" />
+      <Realisations />
+
+      {/* Une galerie par chantier disposant de vraies photos (aujourd'hui : Lot 10, Siguiri). */}
+      {realisations
+        .filter((realisation) => realisation.photos?.length)
+        .map((realisation) => (
+          <RealisationGallery key={realisationSlug(realisation)} realisation={realisation} />
+        ))}
     </main>
   );
 }

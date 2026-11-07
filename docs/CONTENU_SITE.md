@@ -53,8 +53,15 @@ Implantée en Haute Guinée, MECEF ET FILS a construit sa réputation sur des ch
 Depuis 2016, MECEF ET FILS a mené à bien des chantiers variés, pour le compte d'agences nationales, de programmes de développement et d'institutions locales. Voici un aperçu de nos principales références.
 
 ### Travaux routiers
-**Lot 10 — AGEROUTE**
+**Lot 10 — AGEROUTE — Siguiri (2023)**
 Travaux routiers réalisés pour le compte de l'Agence Guinéenne des Routes. Notre référence la plus significative dans le domaine routier à ce jour.
+Voirie du fleuve Niger à Siguiri : 1 164 m de route en béton armé, avec ouvrages de franchissement (dalots).
+
+> Source : chantier confirmé « Lot 10 à Siguiri » par le développeur (07/11/2026) ; longueur, béton armé,
+> dalots et dates tirés des publications Facebook de Mecef & Fils (pose de la première pierre le
+> 17 avril 2023 en présence du préfet et du président de la délégation spéciale de Siguiri ; visite
+> du préfet le 17 mai 2023 ; visite du Directeur des travaux publics de Kankan le 24 mai 2023).
+> Montant non communiqué. Photos du chantier : `public/images/realisations/lot-10-*.jpg`.
 
 **Digues et routes — Mandiana (Haute Guinée)**
 Réalisé pour le PADER HG (2020) — 943 832 700 GNF

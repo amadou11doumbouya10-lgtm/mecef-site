@@ -5,8 +5,10 @@ import Image from "next/image";
 
 interface HeroBackgroundProps {
   /** Photos réelles de chantier. Tant que ce tableau est vide, un motif géométrique
-   *  de repli s'affiche à la place — jamais de photo de stock générique. */
-  images?: { src: string; alt: string }[];
+   *  de repli s'affiche à la place — jamais de photo de stock générique.
+   *  `position` (CSS object-position, ex. "50% 30%") choisit la bande visible quand une
+   *  photo portrait est recadrée en paysage sur desktop ; centrée par défaut. */
+  images?: { src: string; alt: string; position?: string }[];
 }
 
 const INTERVAL_MS = 4500;
@@ -35,6 +37,7 @@ export default function HeroBackground({ images = [] }: HeroBackgroundProps) {
             alt={image.alt}
             fill
             priority={index === 0}
+            style={{ objectPosition: image.position }}
             className={`object-cover transition-opacity duration-1000 ease-in-out ${
               index === active ? "opacity-100" : "opacity-0"
             }`}
@@ -46,15 +49,17 @@ export default function HeroBackground({ images = [] }: HeroBackgroundProps) {
         </div>
       )}
 
-      {/* Dégradés pour garder le texte lisible par-dessus les photos, teintés charbon
-          plutôt que noir pur pour rester dans la palette de marque. */}
-      <div className="absolute inset-0 bg-charcoal/40" aria-hidden />
+      {/* Voiles teintés charbon (pas noir pur, pour rester dans la palette), dosés pour que
+          la photo reste bien visible :
+          - mobile : le texte occupe toute la largeur → voile uniforme léger ;
+          - desktop : le texte est à gauche → dégradé gauche→droite, photo dégagée à droite ;
+          - haut (sous la Navbar transparente) et bas (raccord avec la section suivante). */}
       <div
-        className="absolute inset-0 bg-[radial-gradient(circle_at_50%_45%,transparent_30%,rgba(24,26,27,0.75)_100%)]"
+        className="absolute inset-0 bg-charcoal/45 lg:bg-transparent lg:bg-[linear-gradient(to_right,rgba(24,26,27,0.8)_0%,rgba(24,26,27,0.5)_35%,rgba(24,26,27,0.1)_60%,transparent_100%)]"
         aria-hidden
       />
       <div
-        className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(24,26,27,0.6)_0%,transparent_25%,transparent_65%,rgba(24,26,27,0.95)_100%)]"
+        className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(24,26,27,0.5)_0%,transparent_20%,transparent_75%,rgba(24,26,27,0.8)_100%)]"
         aria-hidden
       />
 
@@ -74,7 +79,7 @@ export default function HeroBackground({ images = [] }: HeroBackgroundProps) {
   );
 }
 
-/* Motif géométrique en attendant des photos de chantier libres de droits : toits stylisés + lignes de plan + accent doré */
+/* Motif géométrique de repli quand aucune photo n'est fournie : toits stylisés + lignes de plan + accent doré */
 function HeroPlaceholder() {
   return (
     <svg

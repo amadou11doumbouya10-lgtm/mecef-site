@@ -3,13 +3,13 @@
 import { useState } from "react";
 import Link from "next/link";
 import { MapPin, Landmark } from "lucide-react";
-import { realisations, type Realisation, type CategorieRealisation } from "@/data/realisations";
+import {
+  realisations,
+  realisationSlug,
+  type Realisation,
+  type CategorieRealisation,
+} from "@/data/realisations";
 import Reveal from "@/components/Reveal";
-
-interface RealisationsProps {
-  /** "featured" : les 2 chantiers mis en avant sur l'accueil. "full" : la grille filtrable par catégorie. */
-  variant?: "featured" | "full";
-}
 
 const categories: CategorieRealisation[] = [
   "Travaux routiers",
@@ -18,44 +18,9 @@ const categories: CategorieRealisation[] = [
   "Fournitures et équipements",
 ];
 
-export default function Realisations({ variant = "full" }: RealisationsProps) {
-  if (variant === "featured") {
-    const agerouteLot10 = realisations.find((r) => r.titre === "Lot 10 — AGEROUTE")!;
-    const sniesEcole = realisations.find((r) => r.beneficiaire === "SNIES")!;
-
-    return (
-      <section className="section border-b border-charcoal-border">
-        <div className="container-page">
-          <Reveal>
-            <p className="label">Nos réalisations</p>
-            <h2 className="section-title mt-3">Des chantiers menés à bien depuis 2016</h2>
-            <p className="section-intro">
-              Depuis 2016, MECEF ET FILS a mené à bien des chantiers variés, pour le compte
-              d&apos;agences nationales, de programmes de développement et d&apos;institutions
-              locales.
-            </p>
-          </Reveal>
-
-          <Reveal delay={100} className="mt-12 grid gap-6 lg:grid-cols-2">
-            <RealisationCard realisation={agerouteLot10} accent />
-            <RealisationCard realisation={sniesEcole} />
-          </Reveal>
-
-          <Link
-            href="/realisations"
-            className="mt-8 inline-block font-mono text-xs font-medium uppercase tracking-[0.15em] text-gold hover:text-cream"
-          >
-            Voir toutes nos réalisations →
-          </Link>
-        </div>
-      </section>
-    );
-  }
-
-  return <FullGrid />;
-}
-
-function FullGrid() {
+// Grille filtrable par catégorie de /realisations. (L'ancienne variante "featured" de
+// l'accueil est remplacée par HomeRealisations.tsx.)
+export default function Realisations() {
   const [active, setActive] = useState<CategorieRealisation | "Tous">("Tous");
 
   const visibleCategories = active === "Tous" ? categories : [active];
@@ -120,7 +85,7 @@ function FilterChip({ label, active, onClick }: { label: string; active: boolean
 }
 
 export function RealisationCard({ realisation, accent }: { realisation: Realisation; accent?: boolean }) {
-  const { titre, lieu, annee, montant, beneficiaire, description, statut = "Achevé" } = realisation;
+  const { titre, lieu, annee, montant, beneficiaire, description, photos, statut = "Achevé" } = realisation;
 
   return (
     <div className={`card flex h-full flex-col ${accent ? "border-l-4 border-l-gold" : ""}`}>
@@ -146,6 +111,15 @@ export function RealisationCard({ realisation, accent }: { realisation: Realisat
       </div>
 
       {description && <p className="mt-3 text-sm leading-relaxed text-warmgray">{description}</p>}
+
+      {photos && photos.length > 0 && (
+        <Link
+          href={`/realisations#${realisationSlug(realisation)}`}
+          className="mb-4 mt-4 inline-block font-mono text-[11px] font-medium uppercase tracking-[0.15em] text-gold hover:text-cream"
+        >
+          Voir le chantier en images ({photos.length}) →
+        </Link>
+      )}
 
       {(annee || montant) && (
         <div className="mt-auto flex divide-x divide-charcoal-border border-t border-charcoal-border pt-4">
