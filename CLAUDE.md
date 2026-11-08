@@ -89,7 +89,7 @@ letter-spaced) for nav/labels/metadata, default sans-serif for body copy — all
 
 Hosted on Vercel, project `vision-amah/mecef-site`, production URL https://mecef-site.vercel.app.
 
-- The GitHub repo is **not** connected to Vercel's Git integration — `git push` does not deploy. Deploy manually with the Vercel CLI (`vercel --prod`), after a passing `npm run build`.
+- **The GitHub repo IS connected to Vercel's Git integration** (verified 2026-11-08: pushing branch `refonte-accueil` triggered a preview build within seconds, `source: git`). Consequences: **a push to `main` deploys to production** (https://mecef-site.vercel.app); a push to any other branch creates a preview deployment, aliased `mecef-site-git-<branch>-vision-amah.vercel.app`. Previews are behind Vercel authentication (`ssoProtection: all_except_custom_domains`) — open them while logged in to the `vision-amah` team. So work on a branch and merge into `main` only when the change should go live; run `npm run build` (or let the preview build) before merging. `vercel --prod` from the CLI still works but is no longer needed. (Earlier docs claimed pushes didn't deploy — that was wrong. The project's history also shows a few deployments from the developer's other repo, `vision-amah`, around 2026-10-20; current deployments come from `mecef-site`.)
 - On Windows, stop the dev server before a local `npm run build` — both write to `.next/` and the build fails with `EPERM` otherwise.
 - Vercel Production env: `NEXT_PUBLIC_SITE_URL=https://mecef-site.vercel.app` (without it, `src/lib/site.ts` falls back to `https://mecefetfils.com`, a domain MECEF doesn't own yet). `RESEND_API_KEY` is not set on Vercel either, so the contact form shows its graceful error in production too.
 

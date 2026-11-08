@@ -176,10 +176,12 @@ qui n'appartient pas encore à MECEF. En production (Vercel), il vaut
 Hébergé sur **Vercel**, projet `vision-amah/mecef-site`, URL de production
 https://mecef-site.vercel.app.
 
-- Le dépôt GitHub (`amadou11doumbouya10-lgtm/mecef-site`) **n'est pas connecté** à
-  l'intégration Git de Vercel : un `git push` ne déploie rien. Déploiement manuel depuis le
-  poste, avec la CLI Vercel connectée au compte : `vercel --prod`. Pour automatiser, connecter
-  le dépôt dans Vercel → Settings → Git.
+- Le dépôt GitHub (`amadou11doumbouya10-lgtm/mecef-site`) **est connecté** à l'intégration Git
+  de Vercel (vérifié le 08/11/2026) : **un push sur `main` met le site en production** ; un push
+  sur une autre branche crée un déploiement de prévisualisation
+  (`mecef-site-git-<branche>-vision-amah.vercel.app`, accessible une fois connecté à l'équipe
+  Vercel `vision-amah`). Travailler sur une branche et ne fusionner dans `main` que ce qui doit
+  partir en ligne. La CLI (`vercel --prod`) reste possible mais n'est plus nécessaire.
 - Variables définies sur Vercel (Production) : `NEXT_PUBLIC_SITE_URL=https://mecef-site.vercel.app`.
   `RESEND_API_KEY` n'y est pas définie : le formulaire de contact affiche donc aussi son
   message d'erreur en production.
