@@ -9,16 +9,24 @@ interface HeroBackgroundProps {
    *  `position` (CSS object-position, ex. "50% 30%") choisit la bande visible quand une
    *  photo portrait est recadrée en paysage sur desktop ; centrée par défaut. */
   images?: { src: string; alt: string; position?: string }[];
+  /** Remonte les barres de progression (md+) quand le hero porte des onglets en bas (accueil). */
+  indicateursHaut?: boolean;
 }
 
-const INTERVAL_MS = 4500;
+// 6 s par photo : assez long pour que le zoom lent (« Ken Burns ») se voie sans presser la lecture.
+const INTERVAL_MS = 6000;
 
-export default function HeroBackground({ images = [] }: HeroBackgroundProps) {
+export default function HeroBackground({ images = [], indicateursHaut = false }: HeroBackgroundProps) {
   const [active, setActive] = useState(0);
+  // Le zoom ne démarre qu'après le premier rendu, sinon la 1re photo s'afficherait déjà zoomée.
+  const [mounted, setMounted] = useState(false);
+  const [animated, setAnimated] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     if (images.length < 2) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    setAnimated(true);
 
     const id = setInterval(() => {
       setActive((current) => (current + 1) % images.length);
@@ -31,17 +39,25 @@ export default function HeroBackground({ images = [] }: HeroBackgroundProps) {
     <div className="absolute inset-0 overflow-hidden bg-charcoal">
       {images.length > 0 ? (
         images.map((image, index) => (
-          <Image
+          // Le conteneur gère le fondu (1 s), l'image le zoom lent (7 s) : la photo sortante finit
+          // de dézoomer pendant qu'elle est invisible, elle est donc prête pour son prochain tour.
+          <div
             key={image.src}
-            src={image.src}
-            alt={image.alt}
-            fill
-            priority={index === 0}
-            style={{ objectPosition: image.position }}
-            className={`object-cover transition-opacity duration-1000 ease-in-out ${
+            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
               index === active ? "opacity-100" : "opacity-0"
             }`}
-          />
+          >
+            <Image
+              src={image.src}
+              alt={image.alt}
+              fill
+              priority={index === 0}
+              style={{ objectPosition: image.position }}
+              className={`object-cover transition-transform duration-[7000ms] ease-out motion-reduce:scale-100 motion-reduce:transition-none ${
+                mounted && index === active ? "scale-[1.08]" : "scale-100"
+              }`}
+            />
+          </div>
         ))
       ) : (
         <div className="blueprint-grid absolute inset-0">
@@ -63,15 +79,23 @@ export default function HeroBackground({ images = [] }: HeroBackgroundProps) {
         aria-hidden
       />
 
+      {/* Une barre par photo : celle en cours se remplit pendant son affichage (relancée à
+          chaque changement grâce à la clé), les autres restent vides. Décoratif. */}
       {images.length > 1 && (
-        <div className="absolute inset-x-0 bottom-8 z-10 flex justify-center gap-2">
+        <div
+          className={`absolute inset-x-0 bottom-8 z-10 flex justify-center gap-2 ${indicateursHaut ? "md:bottom-32" : ""}`}
+          aria-hidden
+        >
           {images.map((image, index) => (
-            <span
-              key={image.src}
-              className={`size-1.5 rounded-full transition-colors ${
-                index === active ? "bg-gold" : "bg-cream/40"
-              }`}
-            />
+            <span key={image.src} className="relative h-0.5 w-8 overflow-hidden rounded-full bg-cream/30">
+              {index === active && (
+                <span
+                  key={active}
+                  className="absolute inset-0 origin-left bg-gold"
+                  style={animated ? { animation: `hero-progress ${INTERVAL_MS}ms linear forwards` } : undefined}
+                />
+              )}
+            </span>
           ))}
         </div>
       )}

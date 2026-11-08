@@ -2,9 +2,12 @@ import type { Metadata } from "next";
 import RegionMap from "@/components/RegionMap";
 import Direction from "@/components/Direction";
 import NotreMission from "@/components/NotreMission";
+import PageHero from "@/components/PageHero";
 
 export const metadata: Metadata = {
-  title: "Qui sommes-nous — MECEF ET FILS",
+  title: "Qui sommes-nous — MECEF ET FILS, entreprise BTP à Siguiri depuis 2016",
+  description:
+    "MECEF ET FILS, entreprise individuelle guinéenne créée en 2016 à Siguiri Koura I : construction, aménagement, fourniture d'équipements et prestations de services en Haute Guinée et à Conakry.",
 };
 
 const infosLegales = [
@@ -17,14 +20,17 @@ const infosLegales = [
 export default function QuiSommesNousPage() {
   return (
     <main>
+      <PageHero
+        image={{ src: "/images/hero-2.jpg", alt: "Compactage de la voirie du Lot 10 à Siguiri, équipe de chantier sur la plateforme", position: "50% 30%" }}
+        label="Qui sommes-nous"
+        title="MECEF ET FILS"
+        subtitle="Une entreprise guinéenne, ancrée à Siguiri depuis 2016"
+        breadcrumb={[{ label: "Accueil", href: "/" }, { label: "Qui sommes-nous" }]}
+      />
+
       <section className="section">
         <div className="container-page">
-          <p className="label">Qui sommes-nous</p>
-          <h1 className="section-title mt-3">
-            MECEF ET FILS<span className="text-gold">.</span>
-          </h1>
-
-          <div className="mt-12 grid gap-12 lg:grid-cols-3">
+          <div className="grid gap-12 lg:grid-cols-3">
             <div className="space-y-10 lg:col-span-2">
               <div>
                 <h2 className="font-serif text-xl font-medium text-cream">Présentation</h2>

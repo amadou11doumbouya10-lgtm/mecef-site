@@ -1,21 +1,22 @@
 import type { Metadata } from "next";
 import Partenariats from "@/components/Partenariats";
+import PageHero from "@/components/PageHero";
 
 export const metadata: Metadata = {
-  title: "Partenariats — MECEF ET FILS",
+  title: "Partenariats institutionnels — MECEF ET FILS",
+  description:
+    "AGEROUTE, SNIES, PADER HG, PDLG, UCEP : les partenaires institutionnels de MECEF ET FILS en Guinée.",
 };
 
 export default function PartenariatsPage() {
   return (
     <main>
-      <section className="pb-4 pt-16 sm:pt-24">
-        <div className="container-page">
-          <p className="label">Partenariats</p>
-          <h1 className="section-title mt-3">
-            Des collaborations durables avec les institutions<span className="text-gold">.</span>
-          </h1>
-        </div>
-      </section>
+      <PageHero
+        image={{ src: "/images/hero-5.jpg", alt: "Ferraillage en double nappe de la voirie du Lot 10, équipe de chantier", position: "50% 40%" }}
+        label="Partenariats"
+        title="Des collaborations durables avec les institutions"
+        breadcrumb={[{ label: "Accueil", href: "/" }, { label: "Partenariats" }]}
+      />
 
       <Partenariats />
     </main>

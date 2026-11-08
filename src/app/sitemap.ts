@@ -8,8 +8,10 @@ const routes = [
   "/realisations",
   "/materiel",
   "/partenariats",
+  "/actualites",
   "/contact",
   ...activites.map((pole) => `/activites/${pole.slug}`),
+  // Mentions légales et confidentialité exclues : elles sont en noindex.
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

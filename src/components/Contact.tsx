@@ -17,7 +17,12 @@ function SubmitButton() {
 const inputClasses =
   "w-full rounded-sm border border-charcoal-border bg-charcoal px-4 py-2.5 text-sm text-cream placeholder:text-warmgray-dark focus:border-gold focus:outline-none focus:ring-1 focus:ring-gold";
 
-export default function Contact() {
+interface ContactProps {
+  /** Objet présélectionné, ex. "devis" quand on arrive par un bouton « Demander un devis ». */
+  defaultSubject?: "devis" | "partenariat" | "question";
+}
+
+export default function Contact({ defaultSubject }: ContactProps) {
   const [state, formAction] = useFormState(sendContactMessage, initialContactFormState);
 
   return (
@@ -82,7 +87,7 @@ export default function Contact() {
             <label htmlFor="subject" className="label mb-1.5 block">
               Objet de la demande *
             </label>
-            <select id="subject" name="subject" required defaultValue="" className={inputClasses}>
+            <select id="subject" name="subject" required defaultValue={defaultSubject ?? ""} className={inputClasses}>
               <option value="" disabled>
                 Sélectionnez un objet
               </option>

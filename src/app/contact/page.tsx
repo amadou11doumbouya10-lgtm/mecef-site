@@ -1,23 +1,29 @@
 import type { Metadata } from "next";
 import Contact from "@/components/Contact";
+import PageHero from "@/components/PageHero";
 
 export const metadata: Metadata = {
-  title: "Contact — MECEF ET FILS",
+  title: "Contact et demande de devis — MECEF ET FILS, BTP à Siguiri",
+  description:
+    "Contactez MECEF ET FILS à Siguiri pour un devis de construction, d'aménagement ou de fourniture d'équipements en Haute Guinée et à Conakry.",
 };
 
-export default function ContactPage() {
+// Les boutons « Demander un devis » pointent vers /contact?objet=devis : l'objet du
+// formulaire est alors présélectionné. (Lire searchParams rend cette page dynamique.)
+export default function ContactPage({ searchParams }: { searchParams: { objet?: string } }) {
+  const objet = searchParams.objet;
+  const defaultSubject = objet === "devis" || objet === "partenariat" || objet === "question" ? objet : undefined;
+
   return (
     <main>
-      <section className="pb-4 pt-16 sm:pt-24">
-        <div className="container-page">
-          <p className="label">Contact</p>
-          <h1 className="section-title mt-3">
-            Parlons de votre projet<span className="text-gold">.</span>
-          </h1>
-        </div>
-      </section>
+      <PageHero
+        image={{ src: "/images/hero-1.jpg", alt: "Équipe MECEF au coulage du béton d'un ouvrage", position: "50% 40%" }}
+        label={defaultSubject === "devis" ? "Demande de devis" : "Contact"}
+        title="Parlons de votre projet"
+        breadcrumb={[{ label: "Accueil", href: "/" }, { label: defaultSubject === "devis" ? "Demande de devis" : "Contact" }]}
+      />
 
-      <Contact />
+      <Contact defaultSubject={defaultSubject} />
     </main>
   );
 }

@@ -3,9 +3,10 @@
 ## Objectif
 
 Site vitrine pour MECEF ET FILS, entreprise guinéenne de bâtiment et travaux publics (BTP),
-basée à Siguiri, active en Haute Guinée et à Conakry depuis 2016. Six pages principales et
-quatre pages de pôle d'activité, toutes statiques, sans base de données : le contenu vient
-soit de `src/data/`, soit est écrit directement dans les composants de section.
+basée à Siguiri, active en Haute Guinée et à Conakry depuis 2016. Sept pages principales
+(dont Actualités), quatre pages de pôle d'activité et deux pages légales, sans base de données :
+le contenu vient soit de `src/data/`, soit est écrit directement dans les composants de section.
+Seule `/contact` est dynamique (elle lit `?objet=devis` pour présélectionner l'objet du formulaire).
 
 En ligne sur https://mecef-site.vercel.app (voir [Déploiement](#déploiement)).
 
@@ -28,16 +29,20 @@ src/
       amenagement/page.tsx
       equipements-fourniture/page.tsx
       prestations-diverses/page.tsx
+    actualites/page.tsx     frise des publications du chantier du Lot 10 (data/actualites.ts)
     contact/
-      page.tsx
+      page.tsx              lit ?objet=devis (boutons « Demander un devis ») pour présélectionner l'objet
       actions.ts           Server Action "use server" (sendContactMessage)
+    mentions-legales/page.tsx   noindex, contenu à valider par MECEF
+    confidentialite/page.tsx    noindex, décrit le fonctionnement réel du formulaire
     sitemap.ts              généré automatiquement par Next (route /sitemap.xml)
     robots.ts               généré automatiquement par Next (route /robots.txt)
     icon.png                favicon (convention App Router, détecté automatiquement)
     apple-icon.png          icône iOS, fond charbon plein
     opengraph-image.png     image de partage social (convention App Router)
   components/               un composant par section de page
-    Navbar.tsx               transparente en haut de page, fond charbon au défilement, bouton « Nous contacter » (voir plus bas)
+    TopBar.tsx               barre fine de coordonnées au-dessus de la Navbar (défile avec la page)
+    Navbar.tsx               transparente en haut de page, fond charbon au défilement, menu « Nos pôles », bouton « Demander un devis » (voir plus bas)
     Hero.tsx / HeroBackground.tsx   hero plein écran, carrousel photo en fondu enchaîné (fallback SVG géométrique si aucune image), légende « Lot 10 · Siguiri · 2023 »
     Stats.tsx                bandeau or des chiffres clés sous le hero, compteur animé au scroll
     PartnerStrip.tsx         rangée fixe des partenaires (logo officiel pour AGEROUTE et UCEP, texte pour les autres)
@@ -47,7 +52,8 @@ src/
     HomeCta.tsx              bandeau or d'appel à l'action final de l'accueil
     Realisations.tsx         grille filtrable par catégorie de /realisations ; exporte aussi RealisationCard (avec badge de statut Achevé / En cours)
     RealisationGallery.tsx   galerie photo d'un chantier (champ `photos` de realisations.ts), en bas de /realisations
-    PoleActiviteDetail.tsx   template partagé par les 4 pages /activites/*
+    PageHero.tsx             bandeau photo en tête des pages intérieures (fil d'Ariane, titre, boutons)
+    PoleActiviteDetail.tsx   template partagé par les 4 pages /activites/* (bandeau, prestations, références, zone, devis, autres pôles)
     Direction.tsx            bloc "Direction" avec emplacement portrait (prop portraitUrl optionnelle, pas encore fournie)
     NotreMission.tsx         section "Notre mission" de /qui-sommes-nous
     Partenariats.tsx
@@ -60,6 +66,7 @@ src/
     realisations.ts         source unique de vérité des chantiers (année, montant, bénéficiaire)
     activites.ts             les 4 pôles d'activité (description + réalisations liées par titre/lieu)
     stats.ts                 chiffres clés, affichés dans le bandeau or Stats.tsx
+    actualites.ts            8 publications datées du chantier du Lot 10 (source : page Facebook de MECEF), page /actualites
   lib/
     site.ts                 SITE_URL + coordonnées de l'entreprise, réutilisés par metadataBase/sitemap/JSON-LD
 public/

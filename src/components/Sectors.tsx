@@ -7,7 +7,8 @@ import Reveal from "@/components/Reveal";
 // du champ `image` de data/activites.ts, la même que sur sa page /activites/[slug].
 export default function Sectors() {
   return (
-    <section aria-labelledby="accueil-poles" className="section">
+    // id="poles" : cible du lien « Nos pôles » du fil d'Ariane des pages pôles (scroll-mt = Navbar).
+    <section id="poles" aria-labelledby="accueil-poles" className="section scroll-mt-20">
       <div className="container-page">
         <Reveal className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between lg:gap-12">
           <div>
@@ -22,12 +23,13 @@ export default function Sectors() {
           </p>
         </Reveal>
 
-        <Reveal delay={100} className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {activites.map(({ slug, title, intro, image }, index) => (
+            // Apparition échelonnée : chaque carte arrive 90 ms après la précédente.
+            <Reveal key={slug} delay={index * 90} className="h-full">
             <Link
-              key={slug}
               href={`/activites/${slug}`}
-              className="group flex flex-col overflow-hidden rounded-sm border border-charcoal-border bg-charcoal-card transition-colors hover:border-gold/60"
+              className="group flex h-full flex-col overflow-hidden rounded-sm border border-charcoal-border bg-charcoal-card transition-colors hover:border-gold/60"
             >
               <div className="relative aspect-[4/3] overflow-hidden">
                 <Image
@@ -47,12 +49,14 @@ export default function Sectors() {
                 </h3>
                 <p className="text-sm leading-relaxed text-warmgray">{intro}</p>
                 <span className="mt-auto pt-3 font-mono text-xs font-semibold uppercase tracking-[0.14em] text-gold">
-                  Découvrir →
+                  Découvrir{" "}
+                  <span aria-hidden className="inline-block transition-transform group-hover:translate-x-1">→</span>
                 </span>
               </div>
             </Link>
+            </Reveal>
           ))}
-        </Reveal>
+        </div>
       </div>
     </section>
   );

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Fraunces, IBM_Plex_Mono } from "next/font/google";
+import TopBar from "@/components/TopBar";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { SITE_URL, ORG } from "@/lib/site";
@@ -19,9 +20,10 @@ const plexMono = IBM_Plex_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: "MECEF ET FILS — Construction, Aménagement, Équipements",
+  // Titre et description par défaut (accueil) : la localisation y figure pour le référencement local.
+  title: "MECEF ET FILS — Entreprise BTP à Siguiri, en Haute Guinée et à Conakry",
   description:
-    "Entreprise guinéenne de bâtiment et travaux publics, ancrée à Siguiri, active en Haute Guinée et à Conakry depuis 2016.",
+    "Entreprise guinéenne de bâtiment et travaux publics, ancrée à Siguiri, active en Haute Guinée et à Conakry depuis 2016 : construction, aménagement, équipements.",
 };
 
 const jsonLd = {
@@ -50,6 +52,7 @@ export default function RootLayout({
     <html lang="fr" className={`${fraunces.variable} ${plexMono.variable}`}>
       <body>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+        <TopBar />
         <Navbar />
         {children}
         <Footer />

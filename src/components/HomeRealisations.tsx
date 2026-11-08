@@ -46,7 +46,7 @@ export default function HomeRealisations() {
             </Link>
           </Reveal>
 
-          <Reveal delay={100} className="mt-10">
+          <div className="mt-10">
             <div className="hidden grid-cols-[80px_minmax(0,2fr)_minmax(0,2fr)_minmax(0,1fr)_190px] gap-6 border-b border-charcoal-border pb-3 md:grid">
               {["Année", "Chantier", "Lieu", "Bénéficiaire", "Montant"].map((titre) => (
                 <span key={titre} className={`label ${titre === "Montant" ? "text-right" : ""}`}>
@@ -55,9 +55,12 @@ export default function HomeRealisations() {
               ))}
             </div>
             <ul>
-              {autres.map((r) => (
-                <li
+              {autres.map((r, i) => (
+                // Lignes du tableau en cascade (Reveal rendu en <li> pour garder un HTML valide).
+                <Reveal
+                  as="li"
                   key={realisationSlug(r)}
+                  delay={i * 80}
                   className="grid gap-1 border-b border-charcoal-border py-5 md:grid-cols-[80px_minmax(0,2fr)_minmax(0,2fr)_minmax(0,1fr)_190px] md:items-baseline md:gap-6"
                 >
                   <span className="font-mono text-sm text-warmgray">{r.annee ?? "—"}</span>
@@ -68,10 +71,10 @@ export default function HomeRealisations() {
                     {r.beneficiaire ?? "—"}
                   </span>
                   <span className="font-serif text-lg text-gold md:text-right">{r.montant}</span>
-                </li>
+                </Reveal>
               ))}
             </ul>
-          </Reveal>
+          </div>
         </div>
       </section>
     </>
@@ -123,22 +126,38 @@ function RealisationPhare({ realisation }: { realisation: Realisation }) {
           )}
         </Reveal>
 
+        {/* Mosaïque : chaque photo se dévoile de bas en haut (Reveal "wipe"), la grande d'abord,
+            puis les vignettes une à une ; léger zoom au survol. */}
         {(couverture || vignettes.length > 0) && (
-          <Reveal
-            delay={100}
-            className="mt-12 grid auto-rows-[150px] grid-cols-2 gap-3 sm:auto-rows-[200px] lg:auto-rows-[220px] lg:grid-cols-4"
-          >
+          <div className="mt-12 grid auto-rows-[150px] grid-cols-2 gap-3 sm:auto-rows-[200px] lg:auto-rows-[220px] lg:grid-cols-4">
             {couverture && (
-              <div className="relative col-span-2 row-span-2 overflow-hidden rounded-sm">
-                <Image src={couverture.src} alt={couverture.alt} fill sizes="(min-width: 1024px) 50vw, 100vw" className="object-cover" />
-              </div>
+              <Reveal variant="wipe" className="group relative col-span-2 row-span-2 overflow-hidden rounded-sm">
+                <Image
+                  src={couverture.src}
+                  alt={couverture.alt}
+                  fill
+                  sizes="(min-width: 1024px) 50vw, 100vw"
+                  className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                />
+              </Reveal>
             )}
-            {vignettes.map((photo) => (
-              <div key={photo.src} className="relative overflow-hidden rounded-sm">
-                <Image src={photo.src} alt={photo.alt} fill sizes="(min-width: 1024px) 25vw, 50vw" className="object-cover" />
-              </div>
+            {vignettes.map((photo, i) => (
+              <Reveal
+                key={photo.src}
+                variant="wipe"
+                delay={150 + i * 120}
+                className="group relative overflow-hidden rounded-sm"
+              >
+                <Image
+                  src={photo.src}
+                  alt={photo.alt}
+                  fill
+                  sizes="(min-width: 1024px) 25vw, 50vw"
+                  className="object-cover transition-transform duration-700 group-hover:scale-[1.05]"
+                />
+              </Reveal>
             ))}
-          </Reveal>
+          </div>
         )}
 
         {photos.length > 0 && (

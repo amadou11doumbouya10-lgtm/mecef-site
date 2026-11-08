@@ -3,7 +3,9 @@ import { Truck, Wrench, ShieldCheck, CheckCircle2 } from "lucide-react";
 import HeroBackground from "@/components/HeroBackground";
 
 export const metadata: Metadata = {
-  title: "Moyens matériels — MECEF ET FILS",
+  title: "Moyens matériels — MECEF ET FILS, BTP à Siguiri",
+  description:
+    "Parc matériel propre de MECEF ET FILS (camion benne, niveleuse, compacteur BOMAG, bétonnière…), complété en location, et équipements de sécurité.",
 };
 
 // Vraies photos d'engins sur les chantiers MECEF (fournies par le client) — engins en propre

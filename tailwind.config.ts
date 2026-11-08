@@ -26,6 +26,16 @@ const config: Config = {
           dark: "#6E6C67",
         },
       },
+      // Entrée en cascade du texte du hero (classe animate-fade-up + [animation-delay:…]).
+      keyframes: {
+        "fade-up": {
+          from: { opacity: "0", transform: "translateY(16px)" },
+          to: { opacity: "1", transform: "translateY(0)" },
+        },
+      },
+      animation: {
+        "fade-up": "fade-up 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both",
+      },
       fontFamily: {
         serif: ["var(--font-serif)", "Georgia", "serif"],
         mono: ["var(--font-mono)", "monospace"],

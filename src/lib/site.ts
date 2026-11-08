@@ -13,3 +13,9 @@ export const ORG = {
   foundingDate: "2016",
   areaServed: ["Haute Guinée", "Conakry"],
 };
+
+/** Numéros tels qu'affichés (même ordre que ORG.telephone, qui sert aux liens tel:). */
+export const TELEPHONES_AFFICHES = ["622 06 78 37", "664 70 05 44"];
+
+/** Cible de tous les boutons « Demander un devis » : présélectionne l'objet du formulaire. */
+export const DEVIS_HREF = "/contact?objet=devis";

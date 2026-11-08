@@ -153,3 +153,60 @@ Email : 2017fakolymamby@gmail.com
 - Objet de la demande (menu déroulant : Demande de devis / Partenariat / Question générale)
 - Message
 
+
+---
+
+## 7. PÔLES D'ACTIVITÉ (pages /activites/*)
+
+Trame commune (inspirée de la structure de centralgroupgn.com, 07/11/2026 — structure seulement,
+aucun texte repris) : fil d'Ariane · titre + zone · « Ce que nous prenons en charge » ·
+références liées · zone d'intervention · bandeau d'appel à l'action · autres pôles.
+
+Prestations = découpage des mots-clés du document client « Description de l'entreprise »
+(voir `src/data/activites.ts`) — aucune description ajoutée par prestation.
+
+Zone d'intervention = déduite des lieux des réalisations : siège à Siguiri ; chantiers à
+Siguiri, Kankan, Mandiana, Konsakoro et Conakry (Ratoma, Matoto).
+
+**À fournir par le client avant d'ajouter ces sections :**
+- Méthode de travail (étapes, de l'étude à la réception)
+- Questions fréquentes et leurs réponses
+- Horaires d'ouverture
+- Numéro joignable sur WhatsApp (le 622 06 78 37 l'est-il ?)
+- Brochure / fiche d'identité de l'entreprise en PDF (pour une page Documents)
+
+---
+
+## 8. ACTUALITÉS
+
+Source : publications datées de la page Facebook « Mecef & Fils » (captures fournies par le
+client le 07/11/2026). Toutes concernent le chantier du Lot 10 — AGEROUTE à Siguiri. Textes =
+reformulation minimale des légendes. Une publication « Suite des travaux de coulage des dalots »
+a été écartée : sa date est coupée sur la capture.
+
+- **17 avril 2023** — Pose de la première pierre de la route du grand fleuve Niger de Siguiri
+  (1 164 m en béton armé), en présence du préfet et du président de la délégation spéciale de Siguiri
+  (publié le 3 mai 2023)
+- **15 mai 2023** — Travaux d'entretien mécanisés sur le fleuve Niger à Siguiri
+- **17 mai 2023** — Visite inopinée du préfet sur le chantier après 24 jours de travaux ; il s'est dit satisfait
+- **24 mai 2023** — Remerciements au Directeur des travaux publics de Kankan pour sa visite, ses remarques et suggestions
+- **26 mai 2023** — Coulage des voiles des ailes et du tablier du deuxième dalot
+- **6 juin 2023** — Ferraillage en double nappe de la voirie du fleuve Niger de Siguiri
+- **23 juin 2023** — Travaux de débouchage de l'ouvrage de fossé sur la voirie du fleuve Niger à Siguiri
+- **25 juin 2023** — Travaux de construction du troisième dalot sur la route du fleuve Niger de Siguiri
+
+---
+
+## 9. MENTIONS LÉGALES ET CONFIDENTIALITÉ
+
+**À faire valider par MECEF** (rédigé à partir des informations légales connues) :
+- Éditeur : MECEF ET FILS, entreprise individuelle — siège Siguiri Koura I, Commune de Siguiri,
+  République de Guinée — RCCM/GC-KAL/069.093A/2016 — N° formalité RCCM/GC-KAL/076.047/2016 —
+  NIF 966123945 — 622 06 78 37 / 664 70 05 44 — 2017fakolymamby@gmail.com
+- Responsable de la publication : la direction de MECEF ET FILS (nom à confirmer)
+- Hébergeur : Vercel Inc., 440 N Barranca Ave #4133, Covina, CA 91723, États-Unis
+- Conception et réalisation : Vision Amah
+- Données personnelles : seules les informations saisies dans le formulaire de contact (nom,
+  structure, email, téléphone, objet, message) sont collectées, pour répondre à la demande ;
+  transmises par email via le service d'envoi Resend ; pas de cookies de mesure d'audience ni de
+  publicité ; la carte de Qui sommes-nous charge ses fonds de plan depuis OpenStreetMap.

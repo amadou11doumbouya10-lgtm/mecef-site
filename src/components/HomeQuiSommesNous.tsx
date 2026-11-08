@@ -1,15 +1,22 @@
 import Image from "next/image";
 import Link from "next/link";
+import { ShieldCheck, MapPin, Users } from "lucide-react";
 import Reveal from "@/components/Reveal";
 
-// Résumé de /qui-sommes-nous pour l'accueil. Textes repris de docs/CONTENU_SITE.md
-// (§2 Présentation, Direction, chiffres clés de l'accueil) — rien d'ajouté.
-// Section crème (maquette « Mélange A + B ») pour rompre la suite de sections charbon.
-const reperes = [
-  { label: "Création", value: "2016" },
-  { label: "Siège", value: "Siguiri Koura I, Commune de Siguiri" },
-  { label: "Présence", value: "Haute Guinée et Conakry" },
-  { label: "Direction", value: "Mamby DOUMBOUYA, Directeur Général" },
+// Résumé de /qui-sommes-nous pour l'accueil, sur fond crème (maquette « Mélange A + B »).
+// Disposition inspirée du bloc « Notre entreprise » de centralgroupgn.com : texte + étiquettes
+// à gauche, photo + 3 cartes à droite. Textes repris de docs/CONTENU_SITE.md §2 et des 3 points
+// de NotreMission.tsx (mêmes formulations) — rien d'ajouté.
+const reperes = ["Créée en 2016", "Siège à Siguiri Koura I", "Haute Guinée et Conakry", "Dirigée par Mamby DOUMBOUYA"];
+
+const mission = [
+  {
+    icon: ShieldCheck,
+    titre: "Rigueur et disponibilité",
+    texte: "Chantiers menés avec rigueur, pour institutions publiques comme clients privés.",
+  },
+  { icon: MapPin, titre: "Ancrage régional", texte: "Implantée en Haute Guinée, active jusqu'à Conakry." },
+  { icon: Users, titre: "Vision familiale", texte: "Le nom « & FILS » reflète un engagement dans la durée." },
 ];
 
 export default function HomeQuiSommesNous() {
@@ -28,6 +35,13 @@ export default function HomeQuiSommesNous() {
             pôles d&apos;activité complémentaires : la construction, l&apos;aménagement, la
             fourniture d&apos;équipements, et les prestations de services.
           </p>
+          <ul className="mt-6 flex flex-wrap gap-2">
+            {reperes.map((repere) => (
+              <li key={repere} className="rounded-full border border-cream-border px-3.5 py-1.5 text-sm text-charcoal">
+                {repere}
+              </li>
+            ))}
+          </ul>
           <div className="mt-8">
             <Link href="/qui-sommes-nous" className="btn-dark">
               Découvrir qui nous sommes
@@ -35,8 +49,8 @@ export default function HomeQuiSommesNous() {
           </div>
         </Reveal>
 
-        <Reveal delay={100}>
-          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-sm">
+        <div>
+          <Reveal variant="wipe" className="relative aspect-[16/10] w-full overflow-hidden rounded-sm">
             <Image
               src="/images/qui-sommes-nous.jpg"
               alt="Suivi de chantier : l'équipe MECEF sur le ferraillage de la voirie du Lot 10"
@@ -44,19 +58,28 @@ export default function HomeQuiSommesNous() {
               sizes="(min-width: 1024px) 50vw, 100vw"
               className="object-cover"
             />
-          </div>
-          <dl>
-            {reperes.map(({ label, value }) => (
-              <div
-                key={label}
-                className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 border-b border-cream-border py-4 last:border-b-0"
+          </Reveal>
+          <ul className="mt-4 grid gap-3">
+            {mission.map(({ icon: Icon, titre, texte }, i) => (
+              <Reveal
+                as="li"
+                key={titre}
+                delay={150 + i * 90}
+                className="flex gap-4 rounded-sm border border-cream-border bg-cream p-4"
               >
-                <dt className="label text-warmgray-dark">{label}</dt>
-                <dd className="text-[15px] text-charcoal">{value}</dd>
-              </div>
+                <span className="flex size-9 shrink-0 items-center justify-center rounded-sm bg-charcoal text-gold">
+                  <Icon size={17} strokeWidth={1.5} aria-hidden />
+                </span>
+                <span>
+                  <span className="block font-mono text-[11px] font-medium uppercase tracking-[0.14em] text-warmgray-dark">
+                    {titre}
+                  </span>
+                  <span className="mt-1 block text-[15px] leading-snug text-charcoal">{texte}</span>
+                </span>
+              </Reveal>
             ))}
-          </dl>
-        </Reveal>
+          </ul>
+        </div>
       </div>
     </section>
   );

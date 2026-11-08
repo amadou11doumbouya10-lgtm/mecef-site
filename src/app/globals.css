@@ -55,6 +55,17 @@
   }
 }
 
+/* Barre de progression du carrousel du hero (HeroBackground) : la durée est passée en style
+   inline pour rester synchronisée avec l'intervalle du carrousel. */
+@keyframes hero-progress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
 /* Motif discret de grille/plan de chantier, utilisé en fond du hero */
 .blueprint-grid {
   background-image: linear-gradient(to right, rgba(243, 239, 231, 0.04) 1px, transparent 1px),
